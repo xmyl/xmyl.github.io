@@ -23,7 +23,7 @@
     
     <title>
     
-        埃式筛法和欧拉筛法的对比 - 夏木彦林
+        MySQL、PHP按周统计数据跨年问题（oW %x%v） - 夏木彦林
     
     </title>
     <meta name="keywords" content="夏木彦林, 小小小气鬼">
@@ -96,27 +96,27 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/6.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/8.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
-				埃式筛法和欧拉筛法的对比
+				MySQL、PHP按周统计数据跨年问题（oW %x%v）
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1571740232" itemprop="datePublished">Published on 10/22, 2019</time>
+				<time datetime="1571743686" itemprop="datePublished">Published on 10/22, 2019</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：594 字</span>
+					<span class="post-count">本文字数：291 字</span>
 					<span>|</span>
-					<span class="post-count">阅读时长 ≈ 2 min</span>
+					<span class="post-count">阅读时长 ≈ 1 min</span>
 				</div>
 			</div>
 			<div class="post-tags">
 				
 				
-                <a href="/tags/算法/">算法</a>
+                <a href="/tags/MySQL/">MySQL</a>
                 
 				
 			</div>
@@ -128,16 +128,16 @@
 <article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
 	<div class="post-header">
 		<h1 class="post-title" itemprop="name headline">
-			埃式筛法和欧拉筛法的对比
+			MySQL、PHP按周统计数据跨年问题（oW %x%v）
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1571740232" itemprop="datePublished">Published on 10/22, 2019</time>
+            <time datetime="1571743686" itemprop="datePublished">Published on 10/22, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：594 字</span>
+				<span class="post-count">本文字数：291 字</span>
 				<span>|</span>
-				<span class="post-count">阅读时长 ≈ 2 min</span>
+				<span class="post-count">阅读时长 ≈ 1 min</span>
 			</div>
 		</div>
 	</div>
@@ -145,92 +145,25 @@
 		<p class="post-tags">
             
             
-            <a href="/tags/算法/">算法</a>
+            <a href="/tags/MySQL/">MySQL</a>
             
             
         </p>
-		<h3 id="普通筛法"><a href="#普通筛法" class="headerlink" title="普通筛法"></a>普通筛法</h3><p>普通筛法举例，验证n是否为素数，即n恰好可以整除2到n之间的数，若第一次遇到符合条件的，就结束当前循环，验证下一个数。</p>
-<pre><code class="php">$t1 = microtime(true);
-
-$n = 50000;
-$cnt = 0;
-$prime = [];
-for ($i = 3; $i &lt;= $n; $i++) { 
-    for ($j = 2; $j &lt; $i; $j++) {
-        if ($i % $j == 0) {
-            break;
-        }
-    }
-    if ($i == $j) {
-        $prime[$cnt++] = $i;
-    }
-}
-
-$t2 = microtime(true);
-echo &#39;Time: &#39;, $t2-$t1, PHP_EOL;
-echo &#39;Now memory_get_usage: &#39;, memory_get_usage(), PHP_EOL;
+		<h3 id="数据统计"><a href="#数据统计" class="headerlink" title="数据统计"></a>数据统计</h3><p>在研发平台或者系统的时候，我们总是会遇到统计数据的情况。</p>
+<p>比如：按自然月、周、日进行统计数据，正常情况下，若我们选择的起始时间不存在跨年的情况，正常使用YW（php）、MySQL中%Y%u（from_unixtime或date_format）进行聚合统计时，是没有任何问题存在。</p>
+<p>但如果选择的时间区间存在跨年的情况，那么在计算一年最后一周、下一年的第一周是会存在问题。<br>比如:2018-12-31是周一，php的处理方式</p>
+<pre><code class="php">echo date(&#39;YW&#39;, strtotime(&#39;2018-12-31&#39;))；// 输出 201801
 </code></pre>
-<h3 id="埃式筛法"><a href="#埃式筛法" class="headerlink" title="埃式筛法"></a>埃式筛法</h3><p>埃式筛法的基本思想就是，当我们遍历到一个素数时，把所有该素数的倍数（自然是合数）都筛选出来。</p>
-<pre><code class="php">$t1 = microtime(true);
-
-$n = 1000000;
-$cnt = 0;
-$vis = [];
-$prime = [];
-for ($i = 0; $i &lt; $n; $i++) {
-    $vis[] = 0;
-}
-
-for ($i = 2; $i &lt;= $n; $i++) { 
-    if (!$vis[$i]) {
-        $prime[$cnt++] = $i;
-    }
-    for ($j = $i; $j &lt;= $n; $j+=$i) {
-        $vis[$j] = 1;
-    }
-}
-
-$t2 = microtime(true);
-echo &#39;Time: &#39;, $t2-$t1, PHP_EOL;
-echo &#39;Now memory_get_usage: &#39;, memory_get_usage(), PHP_EOL;
-</code></pre>
-<p>该算法筛选2与4的时候，会重复筛选，并没有减少循环次数。</p>
-<h3 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h3><p>首先，我们知道当一个数为素数的时候，它的倍数肯定不是素数。所以我们可以从2开始通过乘积筛掉所有的合数。将所有合数标记，保证不被重复筛除，时间复杂度为O（n）。</p>
-<pre><code class="php">$t1 = microtime(true);
-
-$n = 1000000;
-$cnt = 0;
-$vis = [];
-$prime = [];
-for ($i = 0; $i &lt; $n; $i++) { 
-    $vis[] = 0;
-}
-for ($i = 2; $i &lt; $n; $i++) {
-    if (!$vis[$i]) {
-        $prime[$cnt++] = $i;
-    }
-    for ($j =0; $j &lt; $cnt &amp;&amp; $i * $prime[$j] &lt;= $n; $j++) { 
-        $vis[$i * $prime[$j]] = 1;
-        if ($i % $prime[$j] == 0) break;
-    }
-}
-
-$t2 = microtime(true);
-echo &#39;Time: &#39;, $t2-$t1, PHP_EOL;
-echo &#39;Now memory_get_usage: &#39;, memory_get_usage(), PHP_EOL;
-</code></pre>
-<p>我们可以发现，在用埃式筛法的同时，同一个数字也许会被筛选多次。</p>
-<p>比如6先被2筛选一次，再被3筛选一次，这样就浪费了很多不必要的时间。</p>
-<p>而欧拉筛法通过if ($i%$prime[$j]==0) break;这一步就避免了重复筛选的发生。</p>
-<p>我们举个例子，比如：2先筛选了4，然后进行下一个循环，3筛选6和9，</p>
-<p>当我们执行到4的时候，可以发现，当i==4时，第一次运行到if ($i%$prime[$j]==0)这一步的时候就直接break掉了。</p>
-<p>这也就是说，当我们的合数进入循环时，其实它已经被之前的数筛选过了。</p>
-<p>所以当合数进入内层循环时，内层循环只执行了一次，从而减少了时间复杂度。</p>
+<p>因为Y对应的年还是2018年，但W对应的周却是2019年的第一周</p>
+<p>同样在MySQL中使用%Y%u格式化时间的时候，跨年也会存在相同的问题。</p>
+<p>针对以上的问题，使用对应的格式化方法即可满足要求。</p>
+<p>php使用oW格式，o对应ISO-8601标准下的年份数字，即格式化2018-12-31会返回201901。</p>
+<p>MySQL使用%x%v格式，x、v对应ISO-8601标准下的年份和周，返回结果同上。</p>
 
 		
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 10/22, 2019 18:30
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 10/22, 2019 19:28
 		</p>
 	</div>
 </article>
@@ -238,17 +171,15 @@ echo &#39;Now memory_get_usage: &#39;, memory_get_usage(), PHP_EOL;
 	<div class="bottom-bar-inner">
 		<div class="bottom-bar-items social-share left">
 			<span class="bottom-bar-item">Share : </span>
-			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/aishi-euler/index.html" target="_blank" title="埃式筛法和欧拉筛法的对比" rel="nofollow">facebook</a></span>
-			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/aishi-euler/&text=埃式筛法和欧拉筛法的对比" target="_blank" title="埃式筛法和欧拉筛法的对比" rel="nofollow">Twitter</a></span>
-			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=埃式筛法和欧拉筛法的对比" target="_blank" title="埃式筛法和欧拉筛法的对比" rel="nofollow">Weibo</a></span>
-			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/aishi-euler/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/php-over-year/index.html" target="_blank" title="MySQL、PHP按周统计数据跨年问题（oW %x%v）" rel="nofollow">facebook</a></span>
+			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/php-over-year/&text=MySQL、PHP按周统计数据跨年问题（oW %x%v）" target="_blank" title="MySQL、PHP按周统计数据跨年问题（oW %x%v）" rel="nofollow">Twitter</a></span>
+			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=MySQL、PHP按周统计数据跨年问题（oW %x%v）" target="_blank" title="MySQL、PHP按周统计数据跨年问题（oW %x%v）" rel="nofollow">Weibo</a></span>
+			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/php-over-year/index.html" target="_blank" rel="nofollow">QRcode</a></span>
 		</div>
 		<div class="bottom-bar-items right">
             
-            <span class="bottom-bar-item"><a href="/php-over-year/">←</a></span>
             
-            
-            <span class="bottom-bar-item"><a href="/hello-world/">→</a></span>
+            <span class="bottom-bar-item"><a href="/aishi-euler/">→</a></span>
             
 			<span class="bottom-bar-item"><a href="#footer">↓</a></span>
 			<span class="bottom-bar-item"><a href="#top">↑</a></span>
