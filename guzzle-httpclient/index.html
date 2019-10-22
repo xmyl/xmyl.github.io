@@ -23,7 +23,7 @@
     
     <title>
     
-        埃式筛法和欧拉筛法的对比 - 夏木彦林
+        Guzzle —— HTTP客户端 - 夏木彦林
     
     </title>
     <meta name="keywords" content="夏木彦林, 小小小气鬼">
@@ -96,27 +96,27 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/5.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/14.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
-				埃式筛法和欧拉筛法的对比
+				Guzzle —— HTTP客户端
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1571744239" itemprop="datePublished">Published on 10/22, 2019</time>
+				<time datetime="1571744483" itemprop="datePublished">Published on 10/22, 2019</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：594 字</span>
+					<span class="post-count">本文字数：346 字</span>
 					<span>|</span>
-					<span class="post-count">阅读时长 ≈ 2 min</span>
+					<span class="post-count">阅读时长 ≈ 1 min</span>
 				</div>
 			</div>
 			<div class="post-tags">
 				
 				
-                <a href="/tags/算法/">算法</a>
+                <a href="/tags/Http-client/">Http-client</a>
                 
 				
 			</div>
@@ -128,16 +128,16 @@
 <article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
 	<div class="post-header">
 		<h1 class="post-title" itemprop="name headline">
-			埃式筛法和欧拉筛法的对比
+			Guzzle —— HTTP客户端
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1571744239" itemprop="datePublished">Published on 10/22, 2019</time>
+            <time datetime="1571744483" itemprop="datePublished">Published on 10/22, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：594 字</span>
+				<span class="post-count">本文字数：346 字</span>
 				<span>|</span>
-				<span class="post-count">阅读时长 ≈ 2 min</span>
+				<span class="post-count">阅读时长 ≈ 1 min</span>
 			</div>
 		</div>
 	</div>
@@ -145,92 +145,35 @@
 		<p class="post-tags">
             
             
-            <a href="/tags/算法/">算法</a>
+            <a href="/tags/Http-client/">Http-client</a>
             
             
         </p>
-		<h3 id="普通筛法"><a href="#普通筛法" class="headerlink" title="普通筛法"></a>普通筛法</h3><p>普通筛法举例，验证n是否为素数，即n恰好可以整除2到n之间的数，若第一次遇到符合条件的，就结束当前循环，验证下一个数。</p>
-<pre><code class="php">$t1 = microtime(true);
-
-$n = 50000;
-$cnt = 0;
-$prime = [];
-for ($i = 3; $i &lt;= $n; $i++) {
-    for ($j = 2; $j &lt; $i; $j++) {
-        if ($i % $j == 0) {
-            break;
-        }
-    }
-    if ($i == $j) {
-        $prime[$cnt++] = $i;
-    }
-}
-
-$t2 = microtime(true);
-echo &#39;Time: &#39;, $t2-$t1, PHP_EOL;
-echo &#39;Now memory_get_usage: &#39;, memory_get_usage(), PHP_EOL;
-</code></pre>
-<h3 id="埃式筛法"><a href="#埃式筛法" class="headerlink" title="埃式筛法"></a>埃式筛法</h3><p>埃式筛法的基本思想就是，当我们遍历到一个素数时，把所有该素数的倍数（自然是合数）都筛选出来。</p>
-<pre><code class="php">$t1 = microtime(true);
-
-$n = 1000000;
-$cnt = 0;
-$vis = [];
-$prime = [];
-for ($i = 0; $i &lt; $n; $i++) {
-    $vis[] = 0;
-}
-
-for ($i = 2; $i &lt;= $n; $i++) {
-    if (!$vis[$i]) {
-        $prime[$cnt++] = $i;
-    }
-    for ($j = $i; $j &lt;= $n; $j+=$i) {
-        $vis[$j] = 1;
-    }
-}
-
-$t2 = microtime(true);
-echo &#39;Time: &#39;, $t2-$t1, PHP_EOL;
-echo &#39;Now memory_get_usage: &#39;, memory_get_usage(), PHP_EOL;
-</code></pre>
-<p>该算法筛选2与4的时候，会重复筛选，并没有减少循环次数。</p>
-<h3 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h3><p>首先，我们知道当一个数为素数的时候，它的倍数肯定不是素数。所以我们可以从2开始通过乘积筛掉所有的合数。将所有合数标记，保证不被重复筛除，时间复杂度为O（n）。</p>
-<pre><code class="php">$t1 = microtime(true);
-
-$n = 1000000;
-$cnt = 0;
-$vis = [];
-$prime = [];
-for ($i = 0; $i &lt; $n; $i++) {
-    $vis[] = 0;
-}
-for ($i = 2; $i &lt; $n; $i++) {
-    if (!$vis[$i]) {
-        $prime[$cnt++] = $i;
-    }
-    for ($j =0; $j &lt; $cnt &amp;&amp; $i * $prime[$j] &lt;= $n; $j++) {
-        $vis[$i * $prime[$j]] = 1;
-        if ($i % $prime[$j] == 0) break;
-    }
-}
-
-$t2 = microtime(true);
-echo &#39;Time: &#39;, $t2-$t1, PHP_EOL;
-echo &#39;Now memory_get_usage: &#39;, memory_get_usage(), PHP_EOL;
-</code></pre>
-<p>我们可以发现，在用埃式筛法的同时，同一个数字也许会被筛选多次。</p>
-<p>比如6先被2筛选一次，再被3筛选一次，这样就浪费了很多不必要的时间。</p>
-<p>而欧拉筛法通过if ($i%$prime[$j]==0) break;这一步就避免了重复筛选的发生。</p>
-<p>我们举个例子，比如：2先筛选了4，然后进行下一个循环，3筛选6和9，</p>
-<p>当我们执行到4的时候，可以发现，当i==4时，第一次运行到if ($i%$prime[$j]==0)这一步的时候就直接break掉了。</p>
-<p>这也就是说，当我们的合数进入循环时，其实它已经被之前的数筛选过了。</p>
-<p>所以当合数进入内层循环时，内层循环只执行了一次，从而减少了时间复杂度。</p>
+		<h3 id="Guzzle介绍"><a href="#Guzzle介绍" class="headerlink" title="Guzzle介绍"></a>Guzzle介绍</h3><p>Guzzle 是一个 PHP HTTP 客户端，致力于让发送 HTTP 请求以及与 Web 服务进行交互变得简单。</p>
+<ul>
+<li>接口简单：构建查询语句、POST请求、分流上传下载大文件、使用HTTP cookies、上传JSON数据等等。</li>
+<li>发送同步或异步的请求均使用相同的接口。</li>
+<li>使用PSR-7接口来请求、响应、分流，允许你使用其他兼容的PSR-7类库与Guzzle共同开发。</li>
+<li>抽象了底层的HTTP传输，允许你改变环境以及其他的代码，如：对CURL与PHP的流或socket并非重度依赖，非阻塞事件循环。</li>
+<li>中间件系统允许你创建构成客户端行为。</li>
+</ul>
+<p>$client = new GuzzleHttp\Client();<br>    $res = $client-&gt;request(‘GET’, ‘<a href="https://api.github.com/user&#39;" target="_blank" rel="noopener">https://api.github.com/user&#39;</a>, [<br>        ‘auth’ =&gt; [‘user’, ‘pass’]<br>    ]);<br>    echo $res-&gt;getStatusCode();<br>    // “200”<br>    echo $res-&gt;getHeader(‘content-type’);<br>    // ‘application/json; charset=utf8’<br>    echo $res-&gt;getBody();<br>    // {“type”:”User”…’</p>
+<pre><code>// 发送一个异步请求
+$request = new \GuzzleHttp\Psr7\Request(&#39;GET&#39;, &#39;http://httpbin.org&#39;);
+$promise = $client-&gt;sendAsync($request)-&gt;then(function ($response) {
+    echo &#39;I completed! &#39; . $response-&gt;getBody();
+});
+$promise-&gt;wait();
+</code></pre><p>github官方地址：<a href="https://github.com/guzzle/guzzle" target="_blank" rel="noopener">Guzzle</a></p>
+<p>中文文档地址：<a href="http://guzzle-cn.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">Guzzle中文文档</a></p>
+<h3 id="Guzzle安装"><a href="#Guzzle安装" class="headerlink" title="Guzzle安装"></a>Guzzle安装</h3><p>推荐使用Composer安装，Composer是PHP的依赖管理工具，允许你在项目中声明依赖关系，并安装这些依赖。</p>
+<pre><code>composer require guzzlehttp/guzzle:~6.0
+</code></pre><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>具体使用方法请查看Guzzle中文文档，里面有更详细的使用介绍。</p>
 
 		
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 10/22, 2019 19:37
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: 10/22, 2019 19:41
 		</p>
 	</div>
 </article>
@@ -238,17 +181,15 @@ echo &#39;Now memory_get_usage: &#39;, memory_get_usage(), PHP_EOL;
 	<div class="bottom-bar-inner">
 		<div class="bottom-bar-items social-share left">
 			<span class="bottom-bar-item">Share : </span>
-			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/aishi-euler/index.html" target="_blank" title="埃式筛法和欧拉筛法的对比" rel="nofollow">facebook</a></span>
-			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/aishi-euler/&text=埃式筛法和欧拉筛法的对比" target="_blank" title="埃式筛法和欧拉筛法的对比" rel="nofollow">Twitter</a></span>
-			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=埃式筛法和欧拉筛法的对比" target="_blank" title="埃式筛法和欧拉筛法的对比" rel="nofollow">Weibo</a></span>
-			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/aishi-euler/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/guzzle-httpclient/index.html" target="_blank" title="Guzzle —— HTTP客户端" rel="nofollow">facebook</a></span>
+			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/guzzle-httpclient/&text=Guzzle —— HTTP客户端" target="_blank" title="Guzzle —— HTTP客户端" rel="nofollow">Twitter</a></span>
+			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=Guzzle —— HTTP客户端" target="_blank" title="Guzzle —— HTTP客户端" rel="nofollow">Weibo</a></span>
+			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/guzzle-httpclient/index.html" target="_blank" rel="nofollow">QRcode</a></span>
 		</div>
 		<div class="bottom-bar-items right">
             
-            <span class="bottom-bar-item"><a href="/guzzle-httpclient/">←</a></span>
             
-            
-            <span class="bottom-bar-item"><a href="/php-over-year/">→</a></span>
+            <span class="bottom-bar-item"><a href="/aishi-euler/">→</a></span>
             
 			<span class="bottom-bar-item"><a href="#footer">↓</a></span>
 			<span class="bottom-bar-item"><a href="#top">↑</a></span>
