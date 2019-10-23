@@ -23,7 +23,7 @@
     
     <title>
     
-        方圆几里 - 夏木彦林
+        主题设置 - 夏木彦林
     
     </title>
     <meta name="keywords" content="夏木彦林, 小小小气鬼">
@@ -96,27 +96,27 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(http://img.zcool.cn/community/01aa2b57bd0c3e0000018c1bed3952.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/12.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
-				方圆几里
+				主题设置
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1571807016" itemprop="datePublished">Published on Oct 23, 2019</time>
+				<time datetime="1571814544" itemprop="datePublished">Published on Oct 23, 2019</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：14 字</span>
+					<span class="post-count">本文字数：837 字</span>
 					<span>|</span>
-					<span class="post-count">阅读时长 ≈ 1 min</span>
+					<span class="post-count">阅读时长 ≈ 2 min</span>
 				</div>
 			</div>
 			<div class="post-tags">
 				
 				
-                <a href="/tags/Music/">Music</a>
+                <a href="/tags/Theme/">Theme</a>
                 
 				
 			</div>
@@ -128,16 +128,16 @@
 <article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
 	<div class="post-header">
 		<h1 class="post-title" itemprop="name headline">
-			方圆几里
+			主题设置
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1571807016" itemprop="datePublished">Published on Oct 23, 2019</time>
+            <time datetime="1571814544" itemprop="datePublished">Published on Oct 23, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：14 字</span>
+				<span class="post-count">本文字数：837 字</span>
 				<span>|</span>
-				<span class="post-count">阅读时长 ≈ 1 min</span>
+				<span class="post-count">阅读时长 ≈ 2 min</span>
 			</div>
 		</div>
 	</div>
@@ -145,12 +145,55 @@
 		<p class="post-tags">
             
             
-            <a href="/tags/Music/">Music</a>
+            <a href="/tags/Theme/">Theme</a>
             
             
         </p>
-		<p><a data-fancybox="gallery" href="http://img.zcool.cn/community/01aa2b57bd0c3e0000018c1bed3952.jpg" data-height="800"><img src="http://img.zcool.cn/community/01aa2b57bd0c3e0000018c1bed3952.jpg"></a></p>
-<p><meting-js id="27955658" server="netease" type="song" autoplay="true"></meting-js><br>曾经沧海难为水<br>除却巫山不是云</p>
+		<h2 id="文章缩略图"><a href="#文章缩略图" class="headerlink" title="文章缩略图"></a>文章缩略图</h2><p>本主题支持对文章进行缩略图配置：</p>
+<pre><code class="markdown"># 默认缩略图
+defaultThumb:
+
+# 随机缩略图设置
+# 设为 0 则不使用主题自带的缩略图
+# 不为 0 时表示默认随机缩略图的数量
+randomThumb: 18
+
+# 文章题图设置
+# 启用则在文章页顶部显示缩略图
+showPostThumb: true
+</code></pre>
+<p>文章缩略图出现的地方有首页，文章页顶部。</p>
+<p>文章设置缩略图方法有三种，自定义字段thumb，文章第一张图片，默认缩略图。</p>
+<p>优先级顺序为：自定义字段thumb → 文章第一张图片 → 默认缩略图 → 随机缩略图 → 无。</p>
+<p>缩略图尺寸大小，高度至少250px，宽度大于高度，推荐高度为400px。</p>
+<h3 id="自定义字段thumb"><a href="#自定义字段thumb" class="headerlink" title="自定义字段thumb"></a>自定义字段thumb</h3><p>在文章顶部添加thumb字段，可以填外链地址，要符合标准的url，以http(s)开头，也可以填写本地文件路径，比如/images/xxx.jpg,图片文件放置在主题的/source/images目录或其子目录下，图片后缀仅支持png，jpg，jpeg，webp。</p>
+<p>若未添加thumb字段，或者添加的thumb字段不符合上述规则，则字段不生效，会使用下一优先级的缩略图配置。</p>
+<h3 id="文章第一张图片"><a href="#文章第一张图片" class="headerlink" title="文章第一张图片"></a>文章第一张图片</h3><p>主题会从文章正文中找出第一张图片的src 作为缩略图。若文章中没有插入图片，则会使用下一优先级缩略图配置。</p>
+<h3 id="默认缩略图"><a href="#默认缩略图" class="headerlink" title="默认缩略图"></a>默认缩略图</h3><p>默认缩略图需要在配置文件中填写defaultThumb 字段，填写地址要求同自定义字段thumb，若留空或者地址不合法，则会使用下一优先级的缩略图配置。</p>
+<h3 id="随机缩略图"><a href="#随机缩略图" class="headerlink" title="随机缩略图"></a>随机缩略图</h3><p>随机缩略图需要在配置文件中配置randomThumb字段。</p>
+<pre><code class="markdown">randomThumb: 18
+</code></pre>
+<p>字段值为随机缩略图的数量，主题默认提供18张缩略图进行随机选择，如果需要新增图片或者删除图片，可以在source/images/thumbs目录下进行操作，注意，图片命名要为纯数字，从1开始，且后缀必须为jpg，比如1.jpg，自定义缩略图后，将randomThumb的值修改成文件夹内图片的数量。</p>
+<h3 id="无缩略图"><a href="#无缩略图" class="headerlink" title="无缩略图"></a>无缩略图</h3><p>若将randomThumb字段设为0，则表示禁用随机缩略图，则在首页缩略图部分显示个性化色块的颜色，在文章页顶部题图显示为灰色，所以建议至少开始随机缩略图选项。</p>
+<h3 id="文章题图"><a href="#文章题图" class="headerlink" title="文章题图"></a>文章题图</h3><p>文章页顶部支持题图设置，若缩略图设置不为空，且showPostThumb设为true，则在文章页顶部会展示题图，图片内容为缩略图的内容。</p>
+<h2 id="个性化标徽"><a href="#个性化标徽" class="headerlink" title="个性化标徽"></a>个性化标徽</h2><p>个性化标徽出现的地方有首页、分类页，标签页，作者页和相关文章</p>
+<p>设置方法是在文章编辑内填写自定义字段，支持的字段如下</p>
+<p>book 、 game 、 note 、 chat 、 code 、 image 、 web 、 link 、 design 、 lock</p>
+<pre><code class="markdown">---
+title: 文章标题
+icon: book
+...
+---
+</code></pre>
+<h2 id="个性化色块"><a href="#个性化色块" class="headerlink" title="个性化色块"></a>个性化色块</h2><p>个性化色块需要到外观设置那开启才能激活使用，色块出现的地方有首页，分类页，标签页，独立搜索页等等</p>
+<p>设置方法是在文章编辑内填写自定义字段，支持的字段如下</p>
+<p>blue、purple、green、yellow、red</p>
+<pre><code class="markdown">---
+title: 文章标题
+color: blue
+...
+---
+</code></pre>
 
 		
 		
@@ -164,7 +207,7 @@
 		</meting-js>
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Oct 23, 2019 01:03 pm
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Oct 23, 2019 03:09 pm
 		</p>
 	</div>
 </article>
@@ -172,14 +215,14 @@
 	<div class="bottom-bar-inner">
 		<div class="bottom-bar-items social-share left">
 			<span class="bottom-bar-item">Share : </span>
-			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/mingmingjiu/index.html" target="_blank" title="方圆几里" rel="nofollow">facebook</a></span>
-			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/mingmingjiu/&text=方圆几里" target="_blank" title="方圆几里" rel="nofollow">Twitter</a></span>
-			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=方圆几里" target="_blank" title="方圆几里" rel="nofollow">Weibo</a></span>
-			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/mingmingjiu/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/theme-setting/index.html" target="_blank" title="主题设置" rel="nofollow">facebook</a></span>
+			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/theme-setting/&text=主题设置" target="_blank" title="主题设置" rel="nofollow">Twitter</a></span>
+			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=主题设置" target="_blank" title="主题设置" rel="nofollow">Weibo</a></span>
+			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/theme-setting/index.html" target="_blank" rel="nofollow">QRcode</a></span>
 		</div>
 		<div class="bottom-bar-items right">
             
-            <span class="bottom-bar-item"><a href="/guzzle-httpclient/">←</a></span>
+            <span class="bottom-bar-item"><a href="/fangyuanjili/">←</a></span>
             
             
             <span class="bottom-bar-item"><a href="/php-over-year/">→</a></span>
@@ -219,7 +262,7 @@
                         <p id="chakhsu"></p>
                     	<p>Theme is <a href="https://github.com/cccyb/hexo-theme-pinghsu" target="_blank">Pinghsu</a> by <a href="https://xmyl.github.io" target="_blank">小小小气鬼</a></p>
 						<p>Powered by <a href="https://hexo.io/" target="_blank" rel="nofollow">Hexo</a></p>
-                        <!-- <p style="margin-top: 10px">站点总字数：1.3k</p> -->
+                        <!-- <p style="margin-top: 10px">站点总字数：2.2k</p> -->
                         
                         
                         <p style="margin-top: 10px">&copy; <!-- 2019 -  -->2019 <a href="https://xmyl.github.io">夏木彦林</a></p>
@@ -230,15 +273,15 @@
             <div class="meta-item meta-posts">
                 <h3 class="meta-title">最近文章</h3>
                 
-                <li><a href="/guzzle-httpclient/">Guzzle —— HTTP客户端</a></li>
+                <li><a href="/fangyuanjili/">方圆几里</a></li>
                 
-                <li><a href="/mingmingjiu/">方圆几里</a></li>
+                <li><a href="/theme-setting/">主题设置</a></li>
                 
                 <li><a href="/php-over-year/">MySQL、PHP按周统计数据跨年问题（oW %x%v）</a></li>
                 
-                <li><a href="/aishi-euler/">埃式筛法和欧拉筛法的对比</a></li>
+                <li><a href="/guzzle-httpclient/">Guzzle —— HTTP客户端</a></li>
                 
-                <li><a href="/hello-world/">Hello World</a></li>
+                <li><a href="/aishi-euler/">埃式筛法和欧拉筛法的对比</a></li>
                 
             </div>
             
