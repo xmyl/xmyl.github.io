@@ -104,11 +104,11 @@
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1571798037" itemprop="datePublished">Published on Oct 23, 2019</time>
+				<time datetime="1571811113" itemprop="datePublished">Published on Oct 23, 2019</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：346 字</span>
+					<span class="post-count">本文字数：363 字</span>
 					<span>|</span>
 					<span class="post-count">阅读时长 ≈ 1 min</span>
 				</div>
@@ -132,10 +132,10 @@
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1571798037" itemprop="datePublished">Published on Oct 23, 2019</time>
+            <time datetime="1571811113" itemprop="datePublished">Published on Oct 23, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：346 字</span>
+				<span class="post-count">本文字数：363 字</span>
 				<span>|</span>
 				<span class="post-count">阅读时长 ≈ 1 min</span>
 			</div>
@@ -157,23 +157,42 @@
 <li>抽象了底层的HTTP传输，允许你改变环境以及其他的代码，如：对CURL与PHP的流或socket并非重度依赖，非阻塞事件循环。</li>
 <li>中间件系统允许你创建构成客户端行为。</li>
 </ul>
-<p>$client = new GuzzleHttp\Client();<br>    $res = $client-&gt;request(‘GET’, ‘<a href="https://api.github.com/user&#39;" target="_blank" rel="noopener">https://api.github.com/user&#39;</a>, [<br>        ‘auth’ =&gt; [‘user’, ‘pass’]<br>    ]);<br>    echo $res-&gt;getStatusCode();<br>    // “200”<br>    echo $res-&gt;getHeader(‘content-type’);<br>    // ‘application/json; charset=utf8’<br>    echo $res-&gt;getBody();<br>    // {“type”:”User”…’</p>
-<pre><code>// 发送一个异步请求
+<pre><code class="php">$client = new GuzzleHttp\Client();
+$res = $client-&gt;request(&#39;GET&#39;, &#39;https://api.github.com/user&#39;, [
+    &#39;auth&#39; =&gt; [&#39;user&#39;, &#39;pass&#39;]
+]);
+
+echo $res-&gt;getStatusCode(); # 200
+echo $res-&gt;getHeader(&#39;content-type&#39;); # &#39;application/json; charset=utf8&#39;
+echo $res-&gt;getBody(); # &#39;{&quot;id&quot;: 1420053, &quot;name&quot;: &quot;guzzle&quot;, ...}&#39;
+
+# Send an asynchronous request.
 $request = new \GuzzleHttp\Psr7\Request(&#39;GET&#39;, &#39;http://httpbin.org&#39;);
 $promise = $client-&gt;sendAsync($request)-&gt;then(function ($response) {
     echo &#39;I completed! &#39; . $response-&gt;getBody();
 });
+
 $promise-&gt;wait();
-</code></pre><p>github官方地址：<a href="https://github.com/guzzle/guzzle" target="_blank" rel="noopener">Guzzle</a></p>
+</code></pre>
+<p>github官方地址：<a href="https://github.com/guzzle/guzzle" target="_blank" rel="noopener">Guzzle</a></p>
 <p>中文文档地址：<a href="http://guzzle-cn.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">Guzzle中文文档</a></p>
 <h3 id="Guzzle安装"><a href="#Guzzle安装" class="headerlink" title="Guzzle安装"></a>Guzzle安装</h3><p>推荐使用Composer安装，Composer是PHP的依赖管理工具，允许你在项目中声明依赖关系，并安装这些依赖。</p>
 <pre><code>composer require guzzlehttp/guzzle:~6.0
-</code></pre><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>具体使用方法请查看Guzzle中文文档，里面有更详细的使用介绍。</p>
+</code></pre><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>具体使用方法请查看Guzzle中文文档，有更详细的使用介绍。</p>
 
 		
 		
+		<meting-js
+			id=""
+			server=""
+			type=""
+			auto=""
+			autoplay="false"
+			>
+		</meting-js>
+		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Oct 23, 2019 10:33 am
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Oct 23, 2019 02:11 pm
 		</p>
 	</div>
 </article>
@@ -189,7 +208,7 @@ $promise-&gt;wait();
 		<div class="bottom-bar-items right">
             
             
-            <span class="bottom-bar-item"><a href="/php-over-year/">→</a></span>
+            <span class="bottom-bar-item"><a href="/mingmingjiu/">→</a></span>
             
 			<span class="bottom-bar-item"><a href="#footer">↓</a></span>
 			<span class="bottom-bar-item"><a href="#top">↑</a></span>
@@ -238,6 +257,8 @@ $promise-&gt;wait();
                 <h3 class="meta-title">最近文章</h3>
                 
                 <li><a href="/guzzle-httpclient/">Guzzle —— HTTP客户端</a></li>
+                
+                <li><a href="/mingmingjiu/">方圆几里</a></li>
                 
                 <li><a href="/php-over-year/">MySQL、PHP按周统计数据跨年问题（oW %x%v）</a></li>
                 
@@ -439,5 +460,9 @@ MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
 
 
 </script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
 
