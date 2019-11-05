@@ -23,7 +23,7 @@
     
     <title>
     
-        Hello World - 夏木彦林
+        迅搜开源中文搜索引擎 - 夏木彦林
     
     </title>
     <meta name="keywords" content="夏木彦林, 小小小气鬼">
@@ -100,23 +100,23 @@
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
-				Hello World
+				迅搜开源中文搜索引擎
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1555066572" itemprop="datePublished">Published on Apr 12, 2019</time>
+				<time datetime="1572946765" itemprop="datePublished">Published on Nov 05, 2019</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：75 字</span>
+					<span class="post-count">本文字数：1.9k 字</span>
 					<span>|</span>
-					<span class="post-count">阅读时长 ≈ 1 min</span>
+					<span class="post-count">阅读时长 ≈ 7 min</span>
 				</div>
 			</div>
 			<div class="post-tags">
 				
 				
-                <a href="/tags/Hello/">Hello</a>
+                <a href="/tags/Xunsearch/">Xunsearch</a>
                 
 				
 			</div>
@@ -128,16 +128,16 @@
 <article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
 	<div class="post-header">
 		<h1 class="post-title" itemprop="name headline">
-			Hello World
+			迅搜开源中文搜索引擎
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1555066572" itemprop="datePublished">Published on Apr 12, 2019</time>
+            <time datetime="1572946765" itemprop="datePublished">Published on Nov 05, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：75 字</span>
+				<span class="post-count">本文字数：1.9k 字</span>
 				<span>|</span>
-				<span class="post-count">阅读时长 ≈ 1 min</span>
+				<span class="post-count">阅读时长 ≈ 7 min</span>
 			</div>
 		</div>
 	</div>
@@ -145,23 +145,116 @@
 		<p class="post-tags">
             
             
-            <a href="/tags/Hello/">Hello</a>
+            <a href="/tags/Xunsearch/">Xunsearch</a>
             
             
         </p>
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+		<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Xunsearch （中文名：迅搜）是一套免费开源的专业中文全文检索解决方案，简单易用而且 功能强大、性能卓越能轻松处理海量数据的全文检索。它包含后端索引、搜索服务程序和前端 脚本语言编写的开发工具包(称之为 SDK) 。</p>
+<p>Xunsearch 底层采用 C/C++ 编写，索引设计基于著名而悠久的 Xapian，分词采用 自主研发同样也是开源的 SCWS分词，两者完美结合，理论上单个搜索库支持 40 亿条 记录。可编译运行于 Linux/FreeBSD 等各种 UNIX 类型的系统。</p>
+<p>Xunsearch PHP-SDK 是该项目的 PHP 语言开发工具包，面向普通开发者提供简要的 API ，在此基础上快速构建自己的全文检索应用。</p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>开源免费 Xunsearch 全面开源，并使用最流行的开源许可协议 GPL 发布。任何人均可以免费 获取本项目的全部源代码，并在许可条件下修改和再分发。</p>
+<p>分布式架构 搜索程序的前端和后端可以分离部署在不同服务器中，对于大规模的搜索应用还可以 对索引进行水平、垂直切割。</p>
+<p>开发难度极低 一般开发者只要在安装和设置完成后，通过提供的脚本 SDK 包，便可十分容易的进行 二次开发，打造出自己的全文搜索引擎。</p>
+<p>功能强大 支持字段检索、结果高亮、字段排序、布尔语法、区间检索、聚合搜索、相关搜索、 权重微调、拼音搜索、搜索建议等专业搜索引擎具备的各项功能。这也是本项目 相对于其它开源搜索软件的重要优势。</p>
+<h3 id="适用领域"><a href="#适用领域" class="headerlink" title="适用领域"></a>适用领域</h3><p>适合具备独立服务器（需要Unix 类操作系统）的初、中型规模的网站，作为完整全文检索技术 解决方案。</p>
+<p>支持 MySQL 数据库全文检索、Web站内/论坛搜索、行业门户/垂直搜索、企业级的站内搜索、 计算机文件搜索等，各种专业搜索引擎（如购物搜索，旅游搜索、游戏搜索）、文档/文献检索 等各种领域。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>Xunsearch PHP-SDK 是与 xunsearch 后端服务协同工作的，所以后先必须先在您的服务器 上安装服务端，服务器操作系统要求必须是 Linux、BSD 或其它类 UNIX 系统，同时安装了 gcc、make 等基础编译环境。</p>
+<ol>
+<li>安装xunsearch</li>
+</ol>
+<pre><code> wget http://www.xunsearch.com/download/xunsearch-full-latest.tar.bz2
+ tar -xjf xunsearch-full-latest.tar.bz2
+ cd xunsearch-full-1.3.0/
+ sh setup.sh
+</code></pre><ol start="2">
+<li>启动（命令中的 $prefix 请务必替换为您的安装目录）</li>
+</ol>
+<pre><code>  cd $prefix ; bin/xs-ctl.sh restart
+</code></pre><h3 id="安装PHP-SDK（这里主要是Yii2-0的安装以及使用Composer安装）"><a href="#安装PHP-SDK（这里主要是Yii2-0的安装以及使用Composer安装）" class="headerlink" title="安装PHP-SDK（这里主要是Yii2.0的安装以及使用Composer安装）"></a>安装PHP-SDK（这里主要是Yii2.0的安装以及使用Composer安装）</h3><p>直接运行</p>
+<pre><code>composer require --prefer-dist hightman/xunsearch &quot;*@beta&quot;
+</code></pre><p>或者将以下内容添加到您的项目根目录 composer.json 中的 require 章节， 然后运行 composer install</p>
+<pre><code>&quot;hightman/xunsearch&quot;: &quot;*@beta&quot;
+</code></pre><h3 id="Yii2-x用法"><a href="#Yii2-x用法" class="headerlink" title="Yii2.x用法"></a>Yii2.x用法</h3><p>在 yii2 中，支持 ActiveRecord 方式来操作。首先， 请在应用配置文件的 components 中添加以下代码，通常是 common/config/main.php</p>
+<pre><code>// application components
+    &#39;components&#39; =&gt; [
+        // ... other components ...
+        &#39;xunsearch&#39; =&gt; [
+            &#39;class&#39; =&gt; &#39;hightman\xunsearch\Connection&#39;,  // 此行必须
+            &#39;iniDirectory&#39; =&gt; &#39;@app/config&#39;, // 搜索 ini 文件目录，默认：@vendor/hightman/xunsearch/app
+            &#39;charset&#39; =&gt; &#39;utf-8&#39;,    // 指定项目使用的默认编码，默认即时 utf-8，可不指定
+        ],
+    ],
+</code></pre><h3 id="Xunsearch项目配置"><a href="#Xunsearch项目配置" class="headerlink" title="Xunsearch项目配置"></a>Xunsearch项目配置</h3><p>项目名称：要求用纯小写字母和小划线组成，长度控制在 2-31 个字符，这也是 xunsearch 服务器内用于保存索引数据的目录名称, 所以同一 xunsearch 服务器内的不同项目名称不可重复。默认为不含后缀的配置文件名， 如：xyz.ini 则项目名默认为 xyz 。</p>
+<p>默认字符集：默认字符集范围涵盖服务端交互时的输入数据、输出数据，实际使用时索引文档、 检索服务器仍可重新指定字符集。</p>
+<p>服务端连接参数：一般默认的索引服务器的配置是8384，搜索服务器的配置为8384。</p>
+<p>关于项目配置的具体参数信息以及字段设计请看这里。项目配置</p>
+<p>这里放上一个配置的案例：</p>
+<pre><code>project.name = demo
+project.default_charset = utf-8
+server.index = 8383
+server.search = 8384
+[id]
+type = id
+[name]
+type = title
+[detail]
+type = body
+[chrono]
+type = numeric
+</code></pre><h3 id="Yii2-0用法创建AR对象"><a href="#Yii2-0用法创建AR对象" class="headerlink" title="Yii2.0用法创建AR对象"></a>Yii2.0用法创建AR对象</h3><p>首先必须创建一个继承自 hightman\xunsearch\ActiveRecord 的模型类，默认情况下会以全小写的类名字作为 ini 文件名。如需指定，请自行覆盖编写 hightman\xunsearch\ActiveRecord::projectName()。通常代码如下：</p>
+<pre><code>class Demo extends \hightman\xunsearch\ActiveRecord
+{
+    /*public static function projectName() {
+        return &#39;another_name&#39;;  // 这将使用 @app/config/another_name.ini 作为项目名
+    }*/
+}
+</code></pre><h3 id="添加或更新索引"><a href="#添加或更新索引" class="headerlink" title="添加或更新索引"></a>添加或更新索引</h3><pre><code>// 添加索引，也可以通过 $model-&gt;setAttributes([...]) 批量赋值
+$model = new Demo;
+$model-&gt;pid = 321;
+$model-&gt;subject = &#39;hello world&#39;;
+$model-&gt;message = &#39;just for testing...&#39;;
+$model-&gt;save();
+
+// 更新索引
+$model = Demo::findOne(321);
+$model-&gt;message .= &#39; + updated&#39;;
+$model-&gt;save();
+
+// 如需删除数据则可直接
+$model-&gt;delete();
+</code></pre><h3 id="检索对象"><a href="#检索对象" class="headerlink" title="检索对象"></a>检索对象</h3><p>和 yii2 其它的 ActiveRecord 类似：</p>
+<pre><code>$query = Demo::find(); // 返回 ActiveQuery 对象
+$condition = &#39;hello world&#39;; // 字符串原样保持，可包含 subject:xxx 这种形式
+$condition = [&#39;WILD&#39;, &#39;key1&#39;, &#39;key2&#39; ... ]; // 通过空格将多个查询条件连接
+$condition = [&#39;AND&#39;, &#39;key1&#39;, &#39;key2&#39; ... ]; // 通过 AND 连接，转换为：key1 AND key2
+$condition = [&#39;OR&#39;, &#39;key1&#39;, &#39;key2&#39; ... ]; // 通过 OR 连接
+$condition = [&#39;XOR&#39;, &#39;key1&#39;, &#39;key2&#39; ... ]; // 通过  XOR 连接
+$condition = [&#39;NOT&#39;, &#39;key&#39;]; // 排除匹配 key 的结果
+$condition = [&#39;pid&#39; =&gt; &#39;123&#39;, &#39;subject&#39; =&gt; &#39;hello&#39;]; // 转换为：pid:123 subject:hello
+$condition = [&#39;pid&#39; =&gt; [&#39;123&#39;, &#39;456&#39;]]; // 相当于 IN，转换为：pid:123 OR pid:456
+$condition = [&#39;IN&#39;, &#39;pid&#39;, [&#39;123&#39;, &#39;456&#39;]]; // 转换结果同上
+$condition = [&#39;NOT IN&#39;, &#39;pid&#39;, [&#39;123&#39;, &#39;456&#39;]]; // 转换为：NOT (pid:123 OR pid:456)
+$condition = [&#39;BETWEEN&#39;, &#39;chrono&#39;, 14918161631, 15918161631]; // 相当于 XSSearch::addRange(...)
+$condition = [&#39;WEIGHT&#39;, &#39;subject&#39;, &#39;hello&#39;, 0.5]; // 相当于额外调用 XSSearch::addWeight(&#39;subject&#39;, &#39;hello&#39;, 0.5);
+$query-&gt;where($condition);
+</code></pre><p>对于 hightman\xunsearch\ActiveQuery 对象，主要支持以下几个方法获取和操作：</p>
+<pre><code>asArray(): 以数组形式返回数据
+one(): 返回一行数据
+all(): 返回全部数据
+count(): 统计数据匹配数据，是估算的并不是完全准确
+exists(): 判断查询条件是否存在数据
+where(): 指定搜索条件
+orderBy(): 指定排序方式，默认为相关性排序
+limit(), offfset(): 指定获取数据量和偏移，用于分页检索
+with(), indexBy ...
+buildOther(function(\XSSearch $search){}) 可通过此方法定制检索选项
+</code></pre><p>ActiveRecord 对象实现了绝大多数据接口，完全可以像使用普通数据库模型一样使用它。如果需要 访问原始的 xunsearch 对象，请通过以下方式获取 Database 对象：</p>
+<pre><code>$db = Demo::getDb();
+$search = $db-&gt;getSearch();
+$index = $db-&gt;getIndex();
+// 如有必要，还可以获得 scws 分词对象
+$scws = $db-&gt;getScws();
+</code></pre><p>相关的 AR 索引操作均非实时的，如需实时更新索引，请通过 Database::getIndex()-&gt;flushIndex() 刷新。 关于查询日志有关的功能，也建议通过原生的 XSSearch 和 XSIndex 对象来操作。</p>
 
 		
 		
@@ -175,7 +268,7 @@
 		</meting-js>
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Apr 12, 2019 06:56 pm
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Nov 05, 2019 05:39 pm
 		</p>
 	</div>
 </article>
@@ -183,15 +276,17 @@
 	<div class="bottom-bar-inner">
 		<div class="bottom-bar-items social-share left">
 			<span class="bottom-bar-item">Share : </span>
-			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/hello-world/index.html" target="_blank" title="Hello World" rel="nofollow">facebook</a></span>
-			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/hello-world/&text=Hello World" target="_blank" title="Hello World" rel="nofollow">Twitter</a></span>
-			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=Hello World" target="_blank" title="Hello World" rel="nofollow">Weibo</a></span>
-			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/hello-world/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/xunsearch/index.html" target="_blank" title="迅搜开源中文搜索引擎" rel="nofollow">facebook</a></span>
+			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/xunsearch/&text=迅搜开源中文搜索引擎" target="_blank" title="迅搜开源中文搜索引擎" rel="nofollow">Twitter</a></span>
+			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=迅搜开源中文搜索引擎" target="_blank" title="迅搜开源中文搜索引擎" rel="nofollow">Weibo</a></span>
+			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/xunsearch/index.html" target="_blank" rel="nofollow">QRcode</a></span>
 		</div>
 		<div class="bottom-bar-items right">
             
-            <span class="bottom-bar-item"><a href="/aishi-euler/">←</a></span>
+            <span class="bottom-bar-item"><a href="/linux-crontab/">←</a></span>
             
+            
+            <span class="bottom-bar-item"><a href="/life-1/">→</a></span>
             
 			<span class="bottom-bar-item"><a href="#footer">↓</a></span>
 			<span class="bottom-bar-item"><a href="#top">↑</a></span>
