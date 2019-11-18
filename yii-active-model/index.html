@@ -23,7 +23,7 @@
     
     <title>
     
-        Sublime插件列表 - 夏木彦林
+        Yii2动态模型 - 夏木彦林
     
     </title>
     <meta name="keywords" content="夏木彦林, 小小小气鬼">
@@ -96,27 +96,29 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(/images/wangqiao.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/yejing.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
-				Sublime插件列表
+				Yii2动态模型
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1573119174" itemprop="datePublished">Published on Nov 07, 2019</time>
+				<time datetime="1574064516" itemprop="datePublished">Published on Nov 18, 2019</time>
 				
 				
 			</div>
 			<div class="post-header-thumb-meta" style="font-size: 13px;">
-				<span class="post-count">本文字数：99 字</span>
+				<span class="post-count">本文字数：356 字</span>
 				<span>|</span>
 				<span class="post-count">阅读时长 ≈ 1 min</span>
 			</div>
 			<div class="post-tags">
 				
 				
-                <a href="/tags/sublime/">sublime</a>
+                <a href="/tags/PHP/">PHP</a>
+                
+                <a href="/tags/Yii/">Yii</a>
                 
 				
 			</div>
@@ -128,14 +130,14 @@
 <article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
 	<div class="post-header">
 		<h1 class="post-title" itemprop="name headline">
-			Sublime插件列表
+			Yii2动态模型
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1573119174" itemprop="datePublished">Published on Nov 07, 2019</time>
+            <time datetime="1574064516" itemprop="datePublished">Published on Nov 18, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：99 字</span>
+				<span class="post-count">本文字数：356 字</span>
 				<span>|</span>
 				<span class="post-count">阅读时长 ≈ 1 min</span>
 			</div>
@@ -145,21 +147,78 @@
 		<p class="post-tags">
             
             
-            <a href="/tags/sublime/">sublime</a>
+            <a href="/tags/PHP/">PHP</a>
+            
+            <a href="/tags/Yii/">Yii</a>
             
             
         </p>
-		<h3 id="插件列表"><a href="#插件列表" class="headerlink" title="插件列表"></a>插件列表</h3><p>ChineseLocalizations 中文支持插件</p>
-<p>Ctags 函数跳转插件</p>
-<p>DocBlockr 代码注释插件</p>
-<p>Emmet 前端代码补全插件</p>
-<p>function name display 在状态栏显示出当前光标处于哪个函数</p>
-<p>Material Theme 主题插件</p>
-<p>Package Control 插件安装</p>
-<p>SideBarEnhancements 侧边栏功能增强插件</p>
-<p>Sublimelinter 语法检测插件</p>
-<p>Sublimelinter-php PHP语法检测插件</p>
-<p>SFTP 远程连接插件</p>
+		<p>我们在使用Yii2框架时，有些业务会有一些特殊的场景，比如数据量大的时候，会考虑按月、年分表。<br>这样多个数据表的字段属性一模一样，这时若有一个动态的AR模型可以使用，体验将是极好的。</p>
+<p>下面提供一个我在原AR上修改后得到的动态AR，详细代码如下：</p>
+<pre><code class="php">&lt;?php
+
+namespace app\models;
+
+use Yii;
+use yii\db\ActiveQuery;
+
+class Test extends \yii\db\ActiveRecord
+{
+    public static $table = &#39;&#39;;
+
+    /**
+     * constructor.
+     * @param array $table
+     * @param array $config
+     */
+    public function __construct($table, $config = [])
+    {
+        self::$table = $table;
+        parent::__construct($config);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function instantiate($row)
+    {
+        return new static(self::tableName());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return self::$table;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @return ActiveQuery the newly created [[ActiveQuery]] instance.
+     */
+    public static function find($table = &#39;&#39;)
+    {
+        self::$table = $table;
+        return Yii::createObject(ActiveQuery::className(), [get_called_class(), [&#39;from&#39; =&gt; [self::tableName()]]]);
+    }
+}
+
+</code></pre>
+<p>假设我这里的规则是按月分表，假设我现在新增数据，则首先需要指定数据表，可以通过当前日期获取，如下：</p>
+<pre><code class="php">$table = Yii::$app-&gt;db-&gt;schema-&gt;getRawTableName(&#39;{{%test_' . date('Ym', strtotime($date)) . '}}&#39;);
+</code></pre>
+<p>后面需要验证数据表是否存在，不存在则创建表(数据表中必须有原表test)，代码如下：</p>
+<pre><code class="php">$res = Yii::$app-&gt;db-&gt;createCommand(&quot;SHOW TABLES LIKE &#39;{$table}&#39;&quot;)-&gt;queryScalar();
+if (empty($res)) {
+    Yii::$app-&gt;db-&gt;createCommand(&quot;CREATE TABLE {$table} LIKE test&quot;)-&gt;execute();
+}
+</code></pre>
+<p>模型的使用方式如下：</p>
+<pre><code class="php">$table = Yii::$app-&gt;db-&gt;schema-&gt;getRawTableName(&#39;{{%test_' . date('Ym', strtotime($date)) . '}}&#39;);
+$test = new Test($table);
+$list = Test::find($table)-&gt;all();
+</code></pre>
 
 		
 		
@@ -173,7 +232,7 @@
 		</meting-js>
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Nov 07, 2019 05:32 pm
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Nov 18, 2019 04:08 pm
 		</p>
 	</div>
 </article>
@@ -181,17 +240,15 @@
 	<div class="bottom-bar-inner">
 		<div class="bottom-bar-items social-share left">
 			<span class="bottom-bar-item">Share : </span>
-			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/sublime-extension/index.html" target="_blank" title="Sublime插件列表" rel="nofollow">facebook</a></span>
-			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/sublime-extension/&text=Sublime插件列表" target="_blank" title="Sublime插件列表" rel="nofollow">Twitter</a></span>
-			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=Sublime插件列表" target="_blank" title="Sublime插件列表" rel="nofollow">Weibo</a></span>
-			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/sublime-extension/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/yii-active-model/index.html" target="_blank" title="Yii2动态模型" rel="nofollow">facebook</a></span>
+			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/yii-active-model/&text=Yii2动态模型" target="_blank" title="Yii2动态模型" rel="nofollow">Twitter</a></span>
+			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=Yii2动态模型" target="_blank" title="Yii2动态模型" rel="nofollow">Weibo</a></span>
+			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/yii-active-model/index.html" target="_blank" rel="nofollow">QRcode</a></span>
 		</div>
 		<div class="bottom-bar-items right">
             
-            <span class="bottom-bar-item"><a href="/yii-active-model/">←</a></span>
             
-            
-            <span class="bottom-bar-item"><a href="/php-suanfa/">→</a></span>
+            <span class="bottom-bar-item"><a href="/sublime-extension/">→</a></span>
             
 			<span class="bottom-bar-item"><a href="#footer">↓</a></span>
 			<span class="bottom-bar-item"><a href="#top">↑</a></span>
@@ -199,6 +256,59 @@
 	</div>
 </div>
 
+
+<div class="related-post-lists">
+	<div class="post-lists">
+		<div class="post-lists-body">
+		
+			<div class="post-list-item">
+				<div class="post-list-item-container">
+					<div class="item-label">
+						<div class="item-title"><a href="/php-suanfa/">PHP算法</a></div>
+						<div class="item-meta clearfix">
+							<div class="item-meta-date" style="color: #5f5f5f;">Nov 07, 2019</div>
+							<div class="item-meta-ico bg-ico-code" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                            <div class="item-meta-cat">
+                                
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="post-list-item">
+				<div class="post-list-item-container">
+					<div class="item-label">
+						<div class="item-title"><a href="/yii2-extension/">PHP扩展列表</a></div>
+						<div class="item-meta clearfix">
+							<div class="item-meta-date" style="color: #5f5f5f;">Nov 07, 2019</div>
+							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                            <div class="item-meta-cat">
+                                
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="post-list-item">
+				<div class="post-list-item-container">
+					<div class="item-label">
+						<div class="item-title"><a href="/php-over-year/">MySQL、PHP按周统计数据跨年问题（oW %x%v）</a></div>
+						<div class="item-meta clearfix">
+							<div class="item-meta-date" style="color: #5f5f5f;">Nov 05, 2019</div>
+							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                            <div class="item-meta-cat">
+                                
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+</div>
 
 
 
