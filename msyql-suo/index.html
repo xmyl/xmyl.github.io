@@ -96,7 +96,7 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/7.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/8.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
@@ -104,13 +104,13 @@
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1577336828" itemprop="datePublished">Published on Dec 26, 2019</time>
+				<time datetime="1577358966" itemprop="datePublished">Published on Dec 26, 2019</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：1.1k 字</span>
+					<span class="post-count">本文字数：1.4k 字</span>
 					<span>|</span>
-					<span class="post-count">阅读时长 ≈ 3 min</span>
+					<span class="post-count">阅读时长 ≈ 4 min</span>
 				</div>
 			</div>
 			<div class="post-tags">
@@ -132,12 +132,12 @@
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1577336828" itemprop="datePublished">Published on Dec 26, 2019</time>
+            <time datetime="1577358966" itemprop="datePublished">Published on Dec 26, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：1.1k 字</span>
+				<span class="post-count">本文字数：1.4k 字</span>
 				<span>|</span>
-				<span class="post-count">阅读时长 ≈ 3 min</span>
+				<span class="post-count">阅读时长 ≈ 4 min</span>
 			</div>
 		</div>
 	</div>
@@ -178,6 +178,13 @@
 <p>排它锁称为写锁，简称X锁，排他锁不能与其他锁并存。若一个事务获取了一个数据的排他锁，其他事务不能再获取该数据的其他锁，包括共享锁和排他锁。</p>
 <p>MySQL中InnoDB引擎的修改语句中，UPDATE、DELETE、INSERT都会自动给涉及到的数据加上排他锁。SELECT语句默认不会添加任何锁类型，加排他锁可以使用select … for update语句，加共享锁使用select … lock in share mode语句。</p>
 <p>加过排他锁的数据行在其他事务中是不能修改数据，也不能通过for update和lock in share mode锁的方式查询数据，但可以直接通过select … from …查询数据，因为普通查询没有任何锁机制。</p>
+<h3 id="MySQL四种事务隔离级"><a href="#MySQL四种事务隔离级" class="headerlink" title="MySQL四种事务隔离级"></a>MySQL四种事务隔离级</h3><p>未提交读：允许脏读，可能读取到其它会话中未提交事务修改的数据。</p>
+<p>提交读：只能读取到已经提交的数据。</p>
+<p>可重复读：在同一个事务内的查询都是与事务开始时刻一致。</p>
+<p>串行读：每次读都需要获取表级共享锁，读写相互阻塞。</p>
+<p>脏读<br>当一个事务正在访问数据时，并且对数据进行了修改，而修改还未提交到数据库中。另一个事务也访问了这个数据，然后使用了该数据。</p>
+<p>不可重复读<br>在一个事务中，多次读取同一数据。在该事务未结束时，另外一个事务也访问了该同一数据。在第一次事务中的两次读数据之间，由于第二个事务的修改，第一次事务两次读取到的数据可能不一样，因为称为不可重复读。</p>
+<p>幻读<br>第一个事务对一个表的数据进行了修改，修改涉及表中的全部数据行。同时第二个事务也修改这个表中的数据，这种修改是向表中插入一行新数据。以后就会发生操作第一个事务的用户发现表中还有未修改的数据行，就像发生了幻觉。</p>
 
 		
 		
@@ -191,7 +198,7 @@
 		</meting-js>
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Dec 26, 2019 01:07 pm
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Dec 26, 2019 07:16 pm
 		</p>
 	</div>
 </article>
@@ -267,7 +274,7 @@
                         <p id="chakhsu"></p>
                     	<p>Theme is <a href="https://github.com/cccyb/hexo-theme-pinghsu" target="_blank">Pinghsu</a> by <a href="https://xmyl.github.io" target="_blank">小小小气鬼</a></p>
 						<p>Powered by <a href="https://hexo.io/" target="_blank" rel="nofollow">Hexo</a></p>
-                        <!-- <p style="margin-top: 10px">站点总字数：11.4k</p> -->
+                        <!-- <p style="margin-top: 10px">站点总字数：11.7k</p> -->
                         
                         
                         <p style="margin-top: 10px">&copy; <!-- 2019 -  -->2019 <a href="https://xmyl.github.io">夏木彦林</a></p>
