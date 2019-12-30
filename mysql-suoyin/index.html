@@ -23,7 +23,7 @@
     
     <title>
     
-        我的大二 - 夏木彦林
+        MySQL索引 - 夏木彦林
     
     </title>
     <meta name="keywords" content="夏木彦林, 小小小气鬼">
@@ -96,27 +96,27 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/10.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/6.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
-				我的大二
+				MySQL索引
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1572946329" itemprop="datePublished">Published on Nov 05, 2019</time>
+				<time datetime="1577685455" itemprop="datePublished">Published on Dec 30, 2019</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：381 字</span>
+					<span class="post-count">本文字数：627 字</span>
 					<span>|</span>
-					<span class="post-count">阅读时长 ≈ 1 min</span>
+					<span class="post-count">阅读时长 ≈ 2 min</span>
 				</div>
 			</div>
 			<div class="post-tags">
 				
 				
-                <a href="/tags/Story/">Story</a>
+                <a href="/tags/MySQL/">MySQL</a>
                 
 				
 			</div>
@@ -128,16 +128,16 @@
 <article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
 	<div class="post-header">
 		<h1 class="post-title" itemprop="name headline">
-			我的大二
+			MySQL索引
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1572946329" itemprop="datePublished">Published on Nov 05, 2019</time>
+            <time datetime="1577685455" itemprop="datePublished">Published on Dec 30, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：381 字</span>
+				<span class="post-count">本文字数：627 字</span>
 				<span>|</span>
-				<span class="post-count">阅读时长 ≈ 1 min</span>
+				<span class="post-count">阅读时长 ≈ 2 min</span>
 			</div>
 		</div>
 	</div>
@@ -145,22 +145,40 @@
 		<p class="post-tags">
             
             
-            <a href="/tags/Story/">Story</a>
+            <a href="/tags/MySQL/">MySQL</a>
             
             
         </p>
-		<p><meting-js id="27955653" server="netease" type="song" autoplay="true"></meting-js></p>
-<p>现在有时候想起大二那一年当部长，会觉得自己很失败。</p>
-<p>我在想如果重新给我一次选择的机会，我或许会选择过一个平凡的大二，放弃去竞选。</p>
-<p>可能在大多数人看来，既然不喜欢在社联，那就走嘛，可我是一个责任心很强的人。</p>
-<p>每次举办活动，需要部门出人出力的时候，往往是我最难过的时候。</p>
-<p>因为我那个部门没有人愿意，而我被夹在中间，一个部门，三个部长，就我一个男生，其余的两个在后来都选择离开。</p>
-<p>以至于在最后社团换届的时候，原本我这个部门负责的事情最后只剩下我一个，到最后还是在其他部门的人员支持下完成了工作。</p>
-<p>那整个一年，我每天过得都不开心，每天睡觉前，都会担心安排的事情完不成。</p>
-<p>也不是没有尝试过和室友交流过，室友也有自己的事情要忙。</p>
-<p>也想过跟父母说，可是长大了的我，慢慢的开始懂得跟父母，都是报喜不报忧的，不应该把自己的不开心带给家人。</p>
-<p>我记得有一天晚上，开完会，晚上10点钟，我坐在综合楼的楼梯上，一个人默默的流泪。</p>
-<p>心里受了委屈，但却说不出来，可我那个时候，我也只是一个普通人。</p>
+		<p>索引包含一个或多个列的值，MySQL只能高效的利用索引的最左前缀列。所有的优势：</p>
+<ul>
+<li>减少查询扫描的数据量</li>
+<li>避免排序和零时表</li>
+<li>将随机IO变为顺序IO</li>
+</ul>
+<p>B-Tree<br>目前使用最多的索引类型。采用B-Tree数据结构来存储数据（每个叶子节点都包含指向下一个叶子节点的指针，从而方便叶子节点的遍历）。B-Tree索引适用于全键值，键值范围，键前缀查找，支持排序。</p>
+<p>B-Tree索引的限制：</p>
+<ul>
+<li>如果不是按照索引的最左列开始查询，则无法适用索引。</li>
+<li>不能跳过索引中的列。如果使用第一列和第三列的索引，则只能使用第一列的索引。</li>
+<li>如果查询中有个范围查询，则其右边的所有列都无法使用索引优化查询。</li>
+</ul>
+<p>哈希索引<br>只有精确匹配索引的所有列，查询才有效。存储引擎会对所有的索引列计算一个哈希值，哈希索引将所有的哈希值存储在索引中，并保存指向每个数据行的指针。</p>
+<p>哈希索引限制：</p>
+<ul>
+<li>无法用于排序</li>
+<li>不支持部分匹配</li>
+<li>只支持等值查询如=、IN，不支持&lt;&gt;</li>
+</ul>
+<p>MySQL执行流程</p>
+<ul>
+<li>MySQL客户端通过协议将SQL语句发送给MySQL服务器</li>
+<li>服务器先检查缓存中是否有执行过这条SQL，如果命中缓存，则将结果返回，否则进入下一个环节（查询缓存默认不开启）</li>
+<li>服务器端进行SQL解析，预处理，然后查询优化器生成对应的执行计划。</li>
+<li>服务器根据查询优化器给出的执行计划，再调用存储引擎的API执行查询。</li>
+<li>将结果返回给客户端，如果开启缓存，则会备份一份到查询缓存中。</li>
+</ul>
+<p>客户端将SQL语句发送给服务端，服务端检查缓存中是否执行过该SQL，若命中缓存，则将结果返回，否则将进行SQL解析和预处理后，生成对应的执行计划，再调用存储引擎的API执行查询，并将查询结果返回给客户端，若开启缓存，则会备份一份数据到查询缓存中。</p>
+<p>缓存-&gt;解析器-&gt;预处理器-&gt;查询优化器-&gt;执行计划-&gt;存储引擎-&gt;数据</p>
 
 		
 		
@@ -174,7 +192,7 @@
 		</meting-js>
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Nov 05, 2019 05:32 pm
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Dec 30, 2019 01:57 pm
 		</p>
 	</div>
 </article>
@@ -182,17 +200,17 @@
 	<div class="bottom-bar-inner">
 		<div class="bottom-bar-items social-share left">
 			<span class="bottom-bar-item">Share : </span>
-			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/life-1/index.html" target="_blank" title="我的大二" rel="nofollow">facebook</a></span>
-			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/life-1/&text=我的大二" target="_blank" title="我的大二" rel="nofollow">Twitter</a></span>
-			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=我的大二" target="_blank" title="我的大二" rel="nofollow">Weibo</a></span>
-			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/life-1/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/mysql-suoyin/index.html" target="_blank" title="MySQL索引" rel="nofollow">facebook</a></span>
+			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/mysql-suoyin/&text=MySQL索引" target="_blank" title="MySQL索引" rel="nofollow">Twitter</a></span>
+			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=MySQL索引" target="_blank" title="MySQL索引" rel="nofollow">Weibo</a></span>
+			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/mysql-suoyin/index.html" target="_blank" rel="nofollow">QRcode</a></span>
 		</div>
 		<div class="bottom-bar-items right">
             
-            <span class="bottom-bar-item"><a href="/linux-crontab/">←</a></span>
+            <span class="bottom-bar-item"><a href="/message-queue/">←</a></span>
             
             
-            <span class="bottom-bar-item"><a href="/birthdaytome/">→</a></span>
+            <span class="bottom-bar-item"><a href="/msyql-suo/">→</a></span>
             
 			<span class="bottom-bar-item"><a href="#footer">↓</a></span>
 			<span class="bottom-bar-item"><a href="#top">↑</a></span>
@@ -208,10 +226,25 @@
 			<div class="post-list-item">
 				<div class="post-list-item-container">
 					<div class="item-label">
-						<div class="item-title"><a href="/sunshine/">《晴天》</a></div>
+						<div class="item-title"><a href="/msyql-suo/">MySQL锁</a></div>
 						<div class="item-meta clearfix">
-							<div class="item-meta-date" style="color: #5f5f5f;">Nov 07, 2019</div>
-							<div class="item-meta-ico bg-ico-lock" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+							<div class="item-meta-date" style="color: #5f5f5f;">Dec 30, 2019</div>
+							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                            <div class="item-meta-cat">
+                                
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="post-list-item">
+				<div class="post-list-item-container">
+					<div class="item-label">
+						<div class="item-title"><a href="/php-over-year/">MySQL、PHP按周统计数据跨年问题（oW %x%v）</a></div>
+						<div class="item-meta clearfix">
+							<div class="item-meta-date" style="color: #5f5f5f;">Nov 05, 2019</div>
+							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
                             <div class="item-meta-cat">
                                 
                             </div>

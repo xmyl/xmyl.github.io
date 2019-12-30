@@ -23,7 +23,7 @@
     
     <title>
     
-        我的大二 - 夏木彦林
+        Redis简介 - 夏木彦林
     
     </title>
     <meta name="keywords" content="夏木彦林, 小小小气鬼">
@@ -96,19 +96,19 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/10.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/2.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
-				我的大二
+				Redis简介
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1572946329" itemprop="datePublished">Published on Nov 05, 2019</time>
+				<time datetime="1577700062" itemprop="datePublished">Published on Dec 30, 2019</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：381 字</span>
+					<span class="post-count">本文字数：367 字</span>
 					<span>|</span>
 					<span class="post-count">阅读时长 ≈ 1 min</span>
 				</div>
@@ -116,7 +116,7 @@
 			<div class="post-tags">
 				
 				
-                <a href="/tags/Story/">Story</a>
+                <a href="/tags/Redis/">Redis</a>
                 
 				
 			</div>
@@ -128,14 +128,14 @@
 <article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
 	<div class="post-header">
 		<h1 class="post-title" itemprop="name headline">
-			我的大二
+			Redis简介
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1572946329" itemprop="datePublished">Published on Nov 05, 2019</time>
+            <time datetime="1577700062" itemprop="datePublished">Published on Dec 30, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：381 字</span>
+				<span class="post-count">本文字数：367 字</span>
 				<span>|</span>
 				<span class="post-count">阅读时长 ≈ 1 min</span>
 			</div>
@@ -145,22 +145,20 @@
 		<p class="post-tags">
             
             
-            <a href="/tags/Story/">Story</a>
+            <a href="/tags/Redis/">Redis</a>
             
             
         </p>
-		<p><meting-js id="27955653" server="netease" type="song" autoplay="true"></meting-js></p>
-<p>现在有时候想起大二那一年当部长，会觉得自己很失败。</p>
-<p>我在想如果重新给我一次选择的机会，我或许会选择过一个平凡的大二，放弃去竞选。</p>
-<p>可能在大多数人看来，既然不喜欢在社联，那就走嘛，可我是一个责任心很强的人。</p>
-<p>每次举办活动，需要部门出人出力的时候，往往是我最难过的时候。</p>
-<p>因为我那个部门没有人愿意，而我被夹在中间，一个部门，三个部长，就我一个男生，其余的两个在后来都选择离开。</p>
-<p>以至于在最后社团换届的时候，原本我这个部门负责的事情最后只剩下我一个，到最后还是在其他部门的人员支持下完成了工作。</p>
-<p>那整个一年，我每天过得都不开心，每天睡觉前，都会担心安排的事情完不成。</p>
-<p>也不是没有尝试过和室友交流过，室友也有自己的事情要忙。</p>
-<p>也想过跟父母说，可是长大了的我，慢慢的开始懂得跟父母，都是报喜不报忧的，不应该把自己的不开心带给家人。</p>
-<p>我记得有一天晚上，开完会，晚上10点钟，我坐在综合楼的楼梯上，一个人默默的流泪。</p>
-<p>心里受了委屈，但却说不出来，可我那个时候，我也只是一个普通人。</p>
+		<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>Redis是使用C语言开发的一个高性能键值数据库。常见类型：string、set、zset、list、hash等</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>缓存、session分离、任务队列、排行榜、网站访问统计等。</p>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>string类型<br>简单的key-value型数据结构，常用数据缓存、计算器、共享用户session</p>
+<p>hash类型<br>提供了字段和字段值的映射。字段值只能是字符串类型，不支持散列、集合等类型。常用作存储用户信息等。</p>
+<p>list类型<br>Redis的list是采用链表来存储的，对于redis的list数据操作，是操作list两端的数据来操作的。常用作消息队列。</p>
+<p>set类型<br>无序、不可重复，会自动去重。可以基于set交集、并集和差集的操作。</p>
+<p>Sorted Set类型<br>有序，去重但可以排序，写进去的时候给一个分数，会自动根据分数排序。<br>排行榜是有序集合经典使用场景，比如视频网站按照时间、播放量排序等操作。</p>
+<h3 id="Redis持久化方案"><a href="#Redis持久化方案" class="headerlink" title="Redis持久化方案"></a>Redis持久化方案</h3><p>RDB方式<br>Redis默认的方式，Redis通过快照方式将数据持久化到磁盘中。</p>
+<p>AOF方式<br>Redis默认不适用该方式持久化。AOF方式的持久化，是操作一个redis数据库，则将操作的记录存储到AOF持久化文件中。</p>
+<p>若开启AOF持久化方案，设置redis配置文件中appendonly为yes即可开启AOF持久化方案。</p>
 
 		
 		
@@ -174,7 +172,7 @@
 		</meting-js>
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Nov 05, 2019 05:32 pm
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Dec 30, 2019 06:01 pm
 		</p>
 	</div>
 </article>
@@ -182,17 +180,15 @@
 	<div class="bottom-bar-inner">
 		<div class="bottom-bar-items social-share left">
 			<span class="bottom-bar-item">Share : </span>
-			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/life-1/index.html" target="_blank" title="我的大二" rel="nofollow">facebook</a></span>
-			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/life-1/&text=我的大二" target="_blank" title="我的大二" rel="nofollow">Twitter</a></span>
-			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=我的大二" target="_blank" title="我的大二" rel="nofollow">Weibo</a></span>
-			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/life-1/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/redis-desc/index.html" target="_blank" title="Redis简介" rel="nofollow">facebook</a></span>
+			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/redis-desc/&text=Redis简介" target="_blank" title="Redis简介" rel="nofollow">Twitter</a></span>
+			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=Redis简介" target="_blank" title="Redis简介" rel="nofollow">Weibo</a></span>
+			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/redis-desc/index.html" target="_blank" rel="nofollow">QRcode</a></span>
 		</div>
 		<div class="bottom-bar-items right">
             
-            <span class="bottom-bar-item"><a href="/linux-crontab/">←</a></span>
             
-            
-            <span class="bottom-bar-item"><a href="/birthdaytome/">→</a></span>
+            <span class="bottom-bar-item"><a href="/message-queue/">→</a></span>
             
 			<span class="bottom-bar-item"><a href="#footer">↓</a></span>
 			<span class="bottom-bar-item"><a href="#top">↑</a></span>
@@ -200,29 +196,6 @@
 	</div>
 </div>
 
-
-<div class="related-post-lists">
-	<div class="post-lists">
-		<div class="post-lists-body">
-		
-			<div class="post-list-item">
-				<div class="post-list-item-container">
-					<div class="item-label">
-						<div class="item-title"><a href="/sunshine/">《晴天》</a></div>
-						<div class="item-meta clearfix">
-							<div class="item-meta-date" style="color: #5f5f5f;">Nov 07, 2019</div>
-							<div class="item-meta-ico bg-ico-lock" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
-                            <div class="item-meta-cat">
-                                
-                            </div>
-                        </div>
-					</div>
-				</div>
-			</div>
-		
-		</div>
-	</div>
-</div>
 
 
 
