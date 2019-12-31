@@ -96,7 +96,7 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/2.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/5.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
@@ -104,13 +104,13 @@
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1577700062" itemprop="datePublished">Published on Dec 30, 2019</time>
+				<time datetime="1577759768" itemprop="datePublished">Published on Dec 31, 2019</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：367 字</span>
+					<span class="post-count">本文字数：767 字</span>
 					<span>|</span>
-					<span class="post-count">阅读时长 ≈ 1 min</span>
+					<span class="post-count">阅读时长 ≈ 2 min</span>
 				</div>
 			</div>
 			<div class="post-tags">
@@ -132,12 +132,12 @@
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1577700062" itemprop="datePublished">Published on Dec 30, 2019</time>
+            <time datetime="1577759768" itemprop="datePublished">Published on Dec 31, 2019</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：367 字</span>
+				<span class="post-count">本文字数：767 字</span>
 				<span>|</span>
-				<span class="post-count">阅读时长 ≈ 1 min</span>
+				<span class="post-count">阅读时长 ≈ 2 min</span>
 			</div>
 		</div>
 	</div>
@@ -156,9 +156,33 @@
 <p>list类型<br>Redis的list是采用链表来存储的，对于redis的list数据操作，是操作list两端的数据来操作的。常用作消息队列。</p>
 <p>set类型<br>无序、不可重复，会自动去重。可以基于set交集、并集和差集的操作。</p>
 <p>Sorted Set类型<br>有序，去重但可以排序，写进去的时候给一个分数，会自动根据分数排序。<br>排行榜是有序集合经典使用场景，比如视频网站按照时间、播放量排序等操作。</p>
-<h3 id="Redis持久化方案"><a href="#Redis持久化方案" class="headerlink" title="Redis持久化方案"></a>Redis持久化方案</h3><p>RDB方式<br>Redis默认的方式，Redis通过快照方式将数据持久化到磁盘中。</p>
+<h3 id="Redis持久化方案"><a href="#Redis持久化方案" class="headerlink" title="Redis持久化方案"></a>Redis持久化方案</h3><p>持久化的意义在于故障恢复数据备份</p>
+<ul>
+<li>RDB对Redis中的数据执行周期性的持久化</li>
+<li>AOF机制，每天写命令作为日志，以append-only模式写入一个日志文件中，在redis重启的时候，可以通过回放AOF日志中的写入指令来重新构建整个数据集</li>
+</ul>
+<p>RDB方式<br>Redis默认的方式，Redis通过快照方式将数据持久化到磁盘中。<br>优点：</p>
+<ul>
+<li>RDB会生成多个数据文件，每个数据文件都代表了某个时刻中redis的数据，RDB适合做冷备。AOF也可以做冷备，只有一个文件，定时copy一份文件出来</li>
+<li>RDB对redis对外提供的读写服务影响很小，可以让redis保持高性能</li>
+<li>相对于AOF持久化机制来说，直接基于RDB数据文件来重启和回复redis进程，更加快速</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>RDB持久化机制数据准确性相对于AOF会丢失部分数据</li>
+<li>RDB每次在fork子进程来执行RDB快照数据文件生成的时候，若数据文件太大，可能会导致对客户端提供的服务暂停数毫秒，甚至数秒。</li>
+</ul>
 <p>AOF方式<br>Redis默认不适用该方式持久化。AOF方式的持久化，是操作一个redis数据库，则将操作的记录存储到AOF持久化文件中。</p>
+<p>AOF存放的指令文件，在数据恢复的时候，需要回放执行所有指令日志，RDB是一份数据文件，会直接加载到内存中。</p>
 <p>若开启AOF持久化方案，设置redis配置文件中appendonly为yes即可开启AOF持久化方案。</p>
+<p>优点：</p>
+<ul>
+<li>相对于RDB数据准确性更高，最多丢失一秒钟数据</li>
+<li>AOF用append-only模式，没有磁盘寻址开销，写入性能非常高，文件不容易损坏</li>
+<li>适合灾难性恢复<br>缺点：</li>
+<li>AOF日志文件比RDB数据快照文件大</li>
+<li>数据恢复慢</li>
+</ul>
 
 		
 		
@@ -172,7 +196,7 @@
 		</meting-js>
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Dec 30, 2019 06:01 pm
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Dec 31, 2019 10:36 am
 		</p>
 	</div>
 </article>
@@ -225,7 +249,7 @@
                         <p id="chakhsu"></p>
                     	<p>Theme is <a href="https://github.com/cccyb/hexo-theme-pinghsu" target="_blank">Pinghsu</a> by <a href="https://xmyl.github.io" target="_blank">小小小气鬼</a></p>
 						<p>Powered by <a href="https://hexo.io/" target="_blank" rel="nofollow">Hexo</a></p>
-                        <!-- <p style="margin-top: 10px">站点总字数：12.9k</p> -->
+                        <!-- <p style="margin-top: 10px">站点总字数：13.3k</p> -->
                         
                         
                         <p style="margin-top: 10px">&copy; <!-- 2019 -  -->2019 <a href="https://xmyl.github.io">夏木彦林</a></p>
