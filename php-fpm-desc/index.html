@@ -23,7 +23,7 @@
     
     <title>
     
-        PHP算法 - 夏木彦林
+        PHP-FPM简介 - 夏木彦林
     
     </title>
     <meta name="keywords" content="夏木彦林, 小小小气鬼">
@@ -96,31 +96,27 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/8.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/4.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
-				PHP算法
+				PHP-FPM简介
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1573119130" itemprop="datePublished">Published on Nov 07, 2019</time>
+				<time datetime="1577961221" itemprop="datePublished">Published on Jan 02, 2020</time>
 				
 				
-			</div>
-			<div class="post-header-thumb-meta" style="font-size: 13px;">
-				<span class="post-count">本文字数：151 字</span>
-				<span>|</span>
-				<span class="post-count">阅读时长 ≈ 1 min</span>
+				<div class="post-header-thumb-meta" style="font-size: 13px;">
+					<span class="post-count">本文字数：539 字</span>
+					<span>|</span>
+					<span class="post-count">阅读时长 ≈ 1 min</span>
+				</div>
 			</div>
 			<div class="post-tags">
 				
 				
-                <a href="/tags/算法/">算法</a>
-                
                 <a href="/tags/PHP/">PHP</a>
-                
-                <a href="/tags/笔试/">笔试</a>
                 
 				
 			</div>
@@ -132,14 +128,14 @@
 <article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
 	<div class="post-header">
 		<h1 class="post-title" itemprop="name headline">
-			PHP算法
+			PHP-FPM简介
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1573119130" itemprop="datePublished">Published on Nov 07, 2019</time>
+            <time datetime="1577961221" itemprop="datePublished">Published on Jan 02, 2020</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：151 字</span>
+				<span class="post-count">本文字数：539 字</span>
 				<span>|</span>
 				<span class="post-count">阅读时长 ≈ 1 min</span>
 			</div>
@@ -149,29 +145,16 @@
 		<p class="post-tags">
             
             
-            <a href="/tags/算法/">算法</a>
-            
             <a href="/tags/PHP/">PHP</a>
-            
-            <a href="/tags/笔试/">笔试</a>
             
             
         </p>
-		<h3 id="选择猴子大王"><a href="#选择猴子大王" class="headerlink" title="选择猴子大王"></a>选择猴子大王</h3><p>一群猴子排成一圈，按1，2，…，n依次编号。然后从第1只开始数，数到第m只,把它踢出圈，从它后面再开始数，再数到第m只，在把它踢出去…，如此不停的 进行下去，直到最后只剩下一只猴子为止，那只猴子就叫做大王。要求编程模拟此过程，输入m、n, 输出最后那个大王的编号。</p>
-<p>详细代码：</p>
-<pre><code class="php">function king($m, $n) {
-    $monkeys = range(1, $n);
-    $i = 0;
-    while (count($monkeys) &gt; 1) {
-        if (($i+1)%$m !== 0) {
-            array_push($monkeys, $monkeys[$i]);
-        }
-        unset($monkeys[$i]);
-        $i++;
-    }
-    return current($monkeys);
-}
-</code></pre>
+		<h3 id="CGI与FastCGI协议"><a href="#CGI与FastCGI协议" class="headerlink" title="CGI与FastCGI协议"></a>CGI与FastCGI协议</h3><p>每种动态语言的代码文件需要通过对应的解析器才能被服务器识别，而CGI协议是使解释器和服务器之间可以相互通信。PHP文件在服务器上的解析需要用到PHP解释器，加上对应的CGI协议，从而使服务器可以解析到PHP文件。</p>
+<p>由于CGI的机制是每处理一个请求需要fork一个CGI进程，请求结束后再kill掉这个进程，在实际应用中比较浪费资源，于是就出现了CGI的改良版FastCGI，FastCGI在请求处理完后，不会kill掉进程，而是继续处理多个请求，大大提高了效率。</p>
+<h3 id="PHP-FPM是什么"><a href="#PHP-FPM是什么" class="headerlink" title="PHP-FPM是什么"></a>PHP-FPM是什么</h3><p>PHP-FPM即PHP-FastCGI Process Manager，它是FastCGI的实现，并提供了进程管理的功能。<br>进程包括master和worker进程两种；master进程只有一个，负责监听端口，接收来自服务器的请求。<br>而worker进程则一般有多个，每个进程内部都会嵌入一个PHP解释器，是代码真正执行的地方。</p>
+<h3 id="Nginx与PHP-FPM的结合"><a href="#Nginx与PHP-FPM的结合" class="headerlink" title="Nginx与PHP-FPM的结合"></a>Nginx与PHP-FPM的结合</h3><p>在Linux上，Nginx与PHP-FPM的通信有Tcp socket和unix socket两种方式.<br>Tcp socket的优点是可以跨服务器，当nginx和PHP-FPM不在同一个机器上时，只能使用该方式。</p>
+<p>Unix socket又叫IPC（inter-process communication进程间通信）socket，用于实现同一主机上的进程间通信，这种方式需要在nginx配置文件中填写PHP-FPM的socket文件位置。</p>
+<p>两者不同点：<br>由于Unix socket不需要经过网络协议栈，不需要打包拆包、计算校验和、维护序号和应答等，只是将应用数据从一个进程拷贝到另一个进程。效率比Tcp socket的方式要高，可减少不必要的Tcp开销 。但Unix socket高并发时不稳定，连接数爆发时，会产生大量的长时缓存，在没有面向链接协议的支撑下，大数据包可能会直接出错不返回异常。但Tcp面向连接的协议，可以更好的保证通信的正确性和完整性。</p>
 
 		
 		
@@ -185,7 +168,7 @@
 		</meting-js>
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Nov 07, 2019 05:32 pm
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Jan 02, 2020 06:33 pm
 		</p>
 	</div>
 </article>
@@ -193,17 +176,15 @@
 	<div class="bottom-bar-inner">
 		<div class="bottom-bar-items social-share left">
 			<span class="bottom-bar-item">Share : </span>
-			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/php-suanfa/index.html" target="_blank" title="PHP算法" rel="nofollow">facebook</a></span>
-			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/php-suanfa/&text=PHP算法" target="_blank" title="PHP算法" rel="nofollow">Twitter</a></span>
-			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=PHP算法" target="_blank" title="PHP算法" rel="nofollow">Weibo</a></span>
-			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/php-suanfa/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/php-fpm-desc/index.html" target="_blank" title="PHP-FPM简介" rel="nofollow">facebook</a></span>
+			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/php-fpm-desc/&text=PHP-FPM简介" target="_blank" title="PHP-FPM简介" rel="nofollow">Twitter</a></span>
+			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=PHP-FPM简介" target="_blank" title="PHP-FPM简介" rel="nofollow">Weibo</a></span>
+			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/php-fpm-desc/index.html" target="_blank" rel="nofollow">QRcode</a></span>
 		</div>
 		<div class="bottom-bar-items right">
             
-            <span class="bottom-bar-item"><a href="/sublime-extension/">←</a></span>
             
-            
-            <span class="bottom-bar-item"><a href="/theme-setting/">→</a></span>
+            <span class="bottom-bar-item"><a href="/redis-desc/">→</a></span>
             
 			<span class="bottom-bar-item"><a href="#footer">↓</a></span>
 			<span class="bottom-bar-item"><a href="#top">↑</a></span>
@@ -219,9 +200,9 @@
 			<div class="post-list-item">
 				<div class="post-list-item-container">
 					<div class="item-label">
-						<div class="item-title"><a href="/php-fpm-desc/">PHP-FPM简介</a></div>
+						<div class="item-title"><a href="/yii-active-model/">Yii2动态模型</a></div>
 						<div class="item-meta clearfix">
-							<div class="item-meta-date" style="color: #5f5f5f;">Jan 02, 2020</div>
+							<div class="item-meta-date" style="color: #5f5f5f;">Nov 18, 2019</div>
 							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
                             <div class="item-meta-cat">
                                 
@@ -234,10 +215,10 @@
 			<div class="post-list-item">
 				<div class="post-list-item-container">
 					<div class="item-label">
-						<div class="item-title"><a href="/yii-active-model/">Yii2动态模型</a></div>
+						<div class="item-title"><a href="/php-suanfa/">PHP算法</a></div>
 						<div class="item-meta clearfix">
-							<div class="item-meta-date" style="color: #5f5f5f;">Nov 18, 2019</div>
-							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+							<div class="item-meta-date" style="color: #5f5f5f;">Nov 07, 2019</div>
+							<div class="item-meta-ico bg-ico-code" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
                             <div class="item-meta-cat">
                                 
                             </div>
@@ -268,21 +249,6 @@
 						<div class="item-meta clearfix">
 							<div class="item-meta-date" style="color: #5f5f5f;">Nov 05, 2019</div>
 							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
-                            <div class="item-meta-cat">
-                                
-                            </div>
-                        </div>
-					</div>
-				</div>
-			</div>
-		
-			<div class="post-list-item">
-				<div class="post-list-item-container">
-					<div class="item-label">
-						<div class="item-title"><a href="/aishi-euler/">埃式筛法和欧拉筛法的对比</a></div>
-						<div class="item-meta clearfix">
-							<div class="item-meta-date" style="color: #5f5f5f;">Oct 22, 2019</div>
-							<div class="item-meta-ico bg-ico-book" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
                             <div class="item-meta-cat">
                                 
                             </div>
