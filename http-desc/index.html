@@ -23,7 +23,7 @@
     
     <title>
     
-        MySQL索引 - 夏木彦林
+        HTTP协议 - 夏木彦林
     
     </title>
     <meta name="keywords" content="夏木彦林, 小小小气鬼">
@@ -96,27 +96,27 @@
 
 
 <div class="post-header-thumb">
-	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/11.jpg);"></div>
+	<div class="post-header-thumb-op" style="background-image:url(/images/thumbs/14.jpg);"></div>
 	<div class="post-header-thumb-cover">
 		<div class="post-header-thumb-container">
 			<div class="post-header-thumb-title">
-				MySQL索引
+				HTTP协议
 			</div>
 			<div class="post-header-thumb-meta">
 				
-				<time datetime="1577685455" itemprop="datePublished">Published on Dec 30, 2019</time>
+				<time datetime="1578022838" itemprop="datePublished">Published on Jan 03, 2020</time>
 				
 				
 				<div class="post-header-thumb-meta" style="font-size: 13px;">
-					<span class="post-count">本文字数：627 字</span>
+					<span class="post-count">本文字数：1.2k 字</span>
 					<span>|</span>
-					<span class="post-count">阅读时长 ≈ 2 min</span>
+					<span class="post-count">阅读时长 ≈ 4 min</span>
 				</div>
 			</div>
 			<div class="post-tags">
 				
 				
-                <a href="/tags/MySQL/">MySQL</a>
+                <a href="/tags/PHP/">PHP</a>
                 
 				
 			</div>
@@ -128,16 +128,16 @@
 <article class="main-content post-page" itemscope itemtype="http://schema.org/Article">
 	<div class="post-header">
 		<h1 class="post-title" itemprop="name headline">
-			MySQL索引
+			HTTP协议
 		</h1>
 		<div class="post-data">
 			
-            <time datetime="1577685455" itemprop="datePublished">Published on Dec 30, 2019</time>
+            <time datetime="1578022838" itemprop="datePublished">Published on Jan 03, 2020</time>
 			
 			<div style="font-size: 13px;">
-				<span class="post-count">本文字数：627 字</span>
+				<span class="post-count">本文字数：1.2k 字</span>
 				<span>|</span>
-				<span class="post-count">阅读时长 ≈ 2 min</span>
+				<span class="post-count">阅读时长 ≈ 4 min</span>
 			</div>
 		</div>
 	</div>
@@ -145,40 +145,128 @@
 		<p class="post-tags">
             
             
-            <a href="/tags/MySQL/">MySQL</a>
+            <a href="/tags/PHP/">PHP</a>
             
             
         </p>
-		<p>索引包含一个或多个列的值，MySQL只能高效的利用索引的最左前缀列。所有的优势：</p>
-<ul>
-<li>减少查询扫描的数据量</li>
-<li>避免排序和零时表</li>
-<li>将随机IO变为顺序IO</li>
-</ul>
-<p>B-Tree<br>目前使用最多的索引类型。采用B-Tree数据结构来存储数据（每个叶子节点都包含指向下一个叶子节点的指针，从而方便叶子节点的遍历）。B-Tree索引适用于全键值，键值范围，键前缀查找，支持排序。</p>
-<p>B-Tree索引的限制：</p>
-<ul>
-<li>如果不是按照索引的最左列开始查询，则无法适用索引。</li>
-<li>不能跳过索引中的列。如果使用第一列和第三列的索引，则只能使用第一列的索引。</li>
-<li>如果查询中有个范围查询，则其右边的所有列都无法使用索引优化查询。</li>
-</ul>
-<p>哈希索引<br>只有精确匹配索引的所有列，查询才有效。存储引擎会对所有的索引列计算一个哈希值，哈希索引将所有的哈希值存储在索引中，并保存指向每个数据行的指针。</p>
-<p>哈希索引限制：</p>
-<ul>
-<li>无法用于排序</li>
-<li>不支持部分匹配</li>
-<li>只支持等值查询如=、IN，不支持&lt;&gt;</li>
-</ul>
-<p>MySQL执行流程</p>
-<ul>
-<li>MySQL客户端通过协议将SQL语句发送给MySQL服务器</li>
-<li>服务器先检查缓存中是否有执行过这条SQL，如果命中缓存，则将结果返回，否则进入下一个环节（查询缓存默认不开启）</li>
-<li>服务器端进行SQL解析，预处理，然后查询优化器生成对应的执行计划。</li>
-<li>服务器根据查询优化器给出的执行计划，再调用存储引擎的API执行查询。</li>
-<li>将结果返回给客户端，如果开启缓存，则会备份一份到查询缓存中。</li>
-</ul>
-<p>客户端将SQL语句发送给服务端，服务端检查缓存中是否执行过该SQL，若命中缓存，则将结果返回，否则将进行SQL解析和预处理后，生成对应的执行计划，再调用存储引擎的API执行查询，并将查询结果返回给客户端，若开启缓存，则会备份一份数据到查询缓存中。</p>
-<p>缓存-&gt;解析器-&gt;预处理器-&gt;查询优化器-&gt;执行计划-&gt;存储引擎-&gt;数据</p>
+		<h3 id="HTTP协议简介"><a href="#HTTP协议简介" class="headerlink" title="HTTP协议简介"></a>HTTP协议简介</h3><p>我们日常生活中经常会使用浏览器访问web站点，但是大家有思考过在这个过程当中到底发生了什么吗？为什么我们在浏览器地址栏上面输入要访问的URL后就可以访问到web页面呢？</p>
+<p>###浏览器背后的故事<br>当我们在浏览器地址栏上输入要访问的URL后，浏览器会分析出URL上面的域名，通过DNS服务器查询出域名映射的IP地址，浏览器根据查询到的IP地址与web服务器进行通信，而通信的协议就是HTTP协议。</p>
+<h3 id="TCP-IP协议"><a href="#TCP-IP协议" class="headerlink" title="TCP/IP协议"></a>TCP/IP协议</h3><p>HTTP协议是构建在TCP/IP之上的协议，是TCP/IP的一个子集。</p>
+<p>TCP/IP协议族是一个四层协议组成的系统，分别是应用层、传输层、网络层和数据链路层。</p>
+<p>应用层<br>应用层是我们编写的应用程序，决定了向用户提供的应用服务。应用层可以通过系统调用与传输层进行通信。<br>常见的应用层协议：HTTP、FTP、SMTP、DNS</p>
+<p>传输层<br>传输层通过系统调用向应用层提供处于网络连接中的两台计算机之间的数据传输功能。</p>
+<p>传输层有两个性质不同的协议：TCP（传输控制协议）和UDP（用户数据报协议）</p>
+<p>网络层<br>网络层用来处理在网络上流动的数据包，数据包是网络传输的最小数据单位。规定了到达对方计算机的传输路线，并把数据包传输给对方。</p>
+<p>链路层<br>链路层用来处理连接网络的硬件部分，包括控制操作系统、硬件设备驱动、NIC网络适配器以及光纤等物理可见部分。</p>
+<p>TCP三次握手<br>TCP协议相对于UDP协议的特点是：TCP协议提供面向连接、字节流和可靠的传输<br>使用TCP协议进行通信的双方必须先建立连接，才能开始传输数据。<br>UDP协议是面向无连接的，在正式传递数据之前不需要先简历连接。UDP协议不保证有序且不丢失的传递到对端，不够稳定。</p>
+<p>TCP协议三次握手的描述如下：</p>
+<p>第一次握手：客户端发送带有SYN标识的连接请求报文段，然后进入SYN发送状态，等待服务端的确认。</p>
+<p>第二次握手：服务端接收到客户端的SYN报文段后，需要发送ACK信息对这个SYN报文段进行确认。同时需发送自己的SYN请求信息。服务端会讲上述的信息放到一个SYN+ACK报文段中一并发送给客户端。</p>
+<p>第三次握手：客户端接收到服务端的SYN+ACK报文段后，会向服务端发送ACK确认报文段，确认报文段发送完毕后，完成TCP三次握手。</p>
+<p>DNS服务是通过DNS协议进行通信的，而DNS协议跟HTTP协议一样也是应用层协议。</p>
+<h3 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h3><p>GET     一般用于获取服务器资源<br>POST    一般用于传输实体主体<br>PUT     一般用于传输文件<br>DELETE  一般用于删除文件<br>HEAD    用户获取报文首部，不返回报文主体<br>OPTIONS 一般获取请求URI资源支持的方法</p>
+<h3 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h3><p>200 客户端发来的请求在服务器端被正确处理<br>204 请求成功，响应报文不含实体的主体部分<br>301 永久性重定向<br>302 临时性重定向<br>304 无需重复请求，可以使用缓存内容<br>400 客户端请求错误<br>403 客户端的请求被服务器拒绝<br>404 客户端访问的页面不存在<br>500 服务器执行请求时发生了错误<br>501 服务器不支持当前请求<br>503 服务器暂时处于超负荷或停机维护，无法处理请求</p>
+<h3 id="Header字段"><a href="#Header字段" class="headerlink" title="Header字段"></a>Header字段</h3><p>通用</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cache-Control</td>
+<td>控制缓存行为</td>
+</tr>
+<tr>
+<td>Connection</td>
+<td>浏览器优先使用的连接类型</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>创建报文时间</td>
+</tr>
+</tbody>
+</table>
+<p>请求</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accept</td>
+<td>正确接收的媒体类型</td>
+</tr>
+<tr>
+<td>Accept-Charset</td>
+<td>正确接收的字符集</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td>正确接收的编码格式列表</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>客户端认证信息，一般存token用</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>发送给服务器端的Cookie信息</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>服务器域名</td>
+</tr>
+<tr>
+<td>User-Agent</td>
+<td>客户端信息</td>
+</tr>
+<tr>
+<td>Referer</td>
+<td>请求发起页面的原始URI</td>
+</tr>
+</tbody>
+</table>
+<p>响应</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content-Encoding</td>
+<td>内容编码格式</td>
+</tr>
+<tr>
+<td>Content-Language</td>
+<td>内容使用语言</td>
+</tr>
+<tr>
+<td>Content-Length</td>
+<td>Request-body长度</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>内容使用的媒体类型</td>
+</tr>
+<tr>
+<td>Expires</td>
+<td>内容的过期时间</td>
+</tr>
+<tr>
+<td>Last modified</td>
+<td>内容最后修改时间</td>
+</tr>
+</tbody>
+</table>
 
 		
 		
@@ -192,7 +280,7 @@
 		</meting-js>
 		
 		<p class="post-info">
-			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Dec 30, 2019 01:57 pm
+			本文由 <a href="https://xmyl.github.io">小小小气鬼</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为: Jan 03, 2020 11:40 am
 		</p>
 	</div>
 </article>
@@ -200,17 +288,15 @@
 	<div class="bottom-bar-inner">
 		<div class="bottom-bar-items social-share left">
 			<span class="bottom-bar-item">Share : </span>
-			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/mysql-suoyin/index.html" target="_blank" title="MySQL索引" rel="nofollow">facebook</a></span>
-			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/mysql-suoyin/&text=MySQL索引" target="_blank" title="MySQL索引" rel="nofollow">Twitter</a></span>
-			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=MySQL索引" target="_blank" title="MySQL索引" rel="nofollow">Weibo</a></span>
-			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/mysql-suoyin/index.html" target="_blank" rel="nofollow">QRcode</a></span>
+			<span class="bottom-bar-item bottom-bar-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://xmyl.github.io/http-desc/index.html" target="_blank" title="HTTP协议" rel="nofollow">facebook</a></span>
+			<span class="bottom-bar-item bottom-bar-twitter"><a href="https://twitter.com/intent/tweet?url=https://xmyl.github.io/http-desc/&text=HTTP协议" target="_blank" title="HTTP协议" rel="nofollow">Twitter</a></span>
+			<span class="bottom-bar-item bottom-bar-weibo"><a href="http://service.weibo.com/share/share.php?url=&amp;title=HTTP协议" target="_blank" title="HTTP协议" rel="nofollow">Weibo</a></span>
+			<span class="bottom-bar-item bottom-bar-qrcode"><a href="//pan.baidu.com/share/qrcode?w=300&amp;h=300&amp;url=https://xmyl.github.io/http-desc/index.html" target="_blank" rel="nofollow">QRcode</a></span>
 		</div>
 		<div class="bottom-bar-items right">
             
-            <span class="bottom-bar-item"><a href="/message-queue/">←</a></span>
             
-            
-            <span class="bottom-bar-item"><a href="/msyql-suo/">→</a></span>
+            <span class="bottom-bar-item"><a href="/php-fpm-desc/">→</a></span>
             
 			<span class="bottom-bar-item"><a href="#footer">↓</a></span>
 			<span class="bottom-bar-item"><a href="#top">↑</a></span>
@@ -226,9 +312,54 @@
 			<div class="post-list-item">
 				<div class="post-list-item-container">
 					<div class="item-label">
-						<div class="item-title"><a href="/msyql-suo/">MySQL锁</a></div>
+						<div class="item-title"><a href="/php-fpm-desc/">PHP-FPM简介</a></div>
 						<div class="item-meta clearfix">
-							<div class="item-meta-date" style="color: #5f5f5f;">Dec 30, 2019</div>
+							<div class="item-meta-date" style="color: #5f5f5f;">Jan 02, 2020</div>
+							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                            <div class="item-meta-cat">
+                                
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="post-list-item">
+				<div class="post-list-item-container">
+					<div class="item-label">
+						<div class="item-title"><a href="/yii-active-model/">Yii2动态模型</a></div>
+						<div class="item-meta clearfix">
+							<div class="item-meta-date" style="color: #5f5f5f;">Nov 18, 2019</div>
+							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                            <div class="item-meta-cat">
+                                
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="post-list-item">
+				<div class="post-list-item-container">
+					<div class="item-label">
+						<div class="item-title"><a href="/php-suanfa/">PHP算法</a></div>
+						<div class="item-meta clearfix">
+							<div class="item-meta-date" style="color: #5f5f5f;">Nov 07, 2019</div>
+							<div class="item-meta-ico bg-ico-code" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
+                            <div class="item-meta-cat">
+                                
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="post-list-item">
+				<div class="post-list-item-container">
+					<div class="item-label">
+						<div class="item-title"><a href="/yii2-extension/">PHP扩展列表</a></div>
+						<div class="item-meta clearfix">
+							<div class="item-meta-date" style="color: #5f5f5f;">Nov 07, 2019</div>
 							<div class="item-meta-ico bg-ico-note" style="background: url(/images/bg-ico.png) no-repeat;background-size: 40px auto;"></div>
                             <div class="item-meta-cat">
                                 
